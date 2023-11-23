@@ -1,0 +1,2 @@
+com.ling.lingcloud.common.mp.config.MybatisPlusAutoConfiguration
+com.ling.lingcloud.common.mp.runner.CommonMpRunner

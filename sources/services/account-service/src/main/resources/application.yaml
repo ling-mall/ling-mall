@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: account
+  profiles:
+    active: @profiles.active@
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+server:
+  port: 20000
+--- # nacos 配置
+spring:
+  cloud:
+    nacos:
+      server-addr: @nacos.server@
+      username: @nacos.username@
+      password: @nacos.password@
+      # 服务发现
+      discovery:
+        group: @nacos.discovery.group@
+        namespace: @nacos.discovery.namespace@
+        service: ${spring.application.name}
+      # 配置
+      config:
+        # 配置文件格式
+        file-extension: yaml
+        # 命名空间
+        namespace: @nacos.config.namespace@
+        # 组名称
+        group: @nacos.config.group@
+
+  config:
+    import:
+      - optional:nacos:lingcloud-${spring.application.name}-service.${spring.cloud.nacos.config.file-extension}
+      - optional:nacos:lingcloud-common-other.${spring.cloud.nacos.config.file-extension}
+      - optional:nacos:lingcloud-common-resources.${spring.cloud.nacos.config.file-extension}
+
+# Sa-Token 配置
+sa-token:
+  sso:
+    # Ticket有效期 (单位: 秒)，默认五分钟
+    ticket-timeout: 300
+    # 所有允许的授权回调地址
+    allow-url: "*"
+
+

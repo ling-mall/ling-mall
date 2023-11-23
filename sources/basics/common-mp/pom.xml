@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ling.lingcloud</groupId>
+        <artifactId>common</artifactId>
+        <version>0.1.0</version>
+        <relativePath>../common/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>common-mp</artifactId>
+
+    <description>
+        公共 Mybatis-Plus 项目
+    </description>
+
+
+    <dependencies>
+        <!--mybatis-plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Spring Boot提供的一个核心库，它包含了许多自动配置类（auto-configuration class），用于自动配置、初始化和启用一些常用的Spring框架组件或第三方库-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--  Spring Boot提供的一个工具库，用于生成配置文件的元数据（metadata），以及为IDE提供代码补全和描述性信息  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
+        <!--集成druid连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-web</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

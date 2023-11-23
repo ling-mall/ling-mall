@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ling.lingcloud.gateway.mapper.GatewayRouteMapper">
+    <resultMap id="GatewayRouteMap" type="com.ling.lingcloud.gateway.api.dto.GatewayRouteDTO">
+        <id property="id" column="id"/>
+        <result property="routerId" column="router_id"/>
+        <result property="sort" column="sort"/>
+        <result property="name" column="name"/>
+        <result property="uri" column="uri"/>
+        <result property="stripPrefix" column="strip_prefix"/>
+        <result property="showApi" column="show_api"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <collection property="gatewayRouteItemList" ofType="com.ling.lingcloud.gateway.api.domain.GatewayRouteItem">
+            <id property="id" column="gri_id"/>
+            <result property="routeId" column="gri_route_id"/>
+            <result property="paramKey" column="gri_param_key"/>
+            <result property="paramValue" column="gri_param_value"/>
+            <result property="type" column="gri_type"/>
+            <result property="status" column="gri_status"/>
+            <result property="remark" column="gri_remark"/>
+            <result property="createBy" column="gri_create_by"/>
+            <result property="createTime" column="gri_create_time"/>
+            <result property="updateBy" column="gri_update_by"/>
+            <result property="updateTime" column="gri_update_time"/>
+            <result property="isDeleted" column="gri_is_deleted"/>
+        </collection>
+    </resultMap>
+    <select id="listAllGatewayRoute" resultType="com.ling.lingcloud.gateway.api.dto.GatewayRouteDTO" resultMap="GatewayRouteMap">
+        select gr.id,
+               gr.router_id,
+               gr.sort,
+               gr.name,
+               gr.uri,
+               gr.strip_prefix,
+               gr.show_api,
+               gr.status,
+               gr.remark,
+               gr.create_by,
+               gr.create_time,
+               gr.update_by,
+               gr.update_time,
+               gr.is_deleted,
+               gri.id          as gri_id,
+               gri.route_id    as gri_route_id,
+               gri.param_key   as gri_param_key,
+               gri.param_value as gri_param_value,
+               gri.type        as gri_type,
+               gri.status      as gri_status,
+               gri.remark      as gri_remark,
+               gri.create_by   as gri_create_by,
+               gri.create_time as gri_create_time,
+               gri.update_by   as gri_update_by,
+               gri.update_time as gri_update_time,
+               gri.is_deleted  as gri_is_deleted
+        from `ling-cloud`.gateway_route gr
+                 left join `ling-cloud`.gateway_route_item gri on gr.id = gri.route_id
+        where gr.status = 1
+          and gri.status = 1
+    </select>
+</mapper>

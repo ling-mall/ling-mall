@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ling.cloud</groupId>
+        <artifactId>common-service</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../../basics/common-service/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>account-service</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>account-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-satoken</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-mp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-web</artifactId>
+        </dependency>
+
+        <!-- Sa-Token 插件：整合SSO -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-sso</artifactId>
+            <version>1.36.0</version>
+        </dependency>
+
+        <!--Mysql数据库驱动-->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

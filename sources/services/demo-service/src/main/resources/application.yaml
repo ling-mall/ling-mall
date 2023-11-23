@@ -1,0 +1,38 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: lingcloud-demo
+  profiles:
+    active: @profiles.active@
+
+--- # nacos 配置
+spring:
+  cloud:
+    nacos:
+      server-addr: @nacos.server@
+      # 服务发现
+      discovery:
+        group: @nacos.discovery.group@
+        namespace: @nacos.discovery.namespace@
+        service: ${spring.application.name}
+      # 配置
+      config:
+        # 配置文件格式
+        file-extension: yaml
+        # 命名空间
+        namespace: @nacos.config.namespace@
+        # 组名称
+        group: @nacos.config.group@
+      username: @nacos.username@
+      password: @nacos.password@
+
+  config:
+    import:
+      - optional:nacos:${spring.application.name}-service.${spring.cloud.nacos.config.file-extension}
+      - optional:nacos:lingcloud-common-other.${spring.cloud.nacos.config.file-extension}
+---
+
+sa-token:
+  sso:
+    auth-url: http://localhost:20000/sso/auth

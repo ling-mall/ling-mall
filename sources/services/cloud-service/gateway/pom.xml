@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ling.lingcloud</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.1.0</version>
+        <relativePath>../../../basics/parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>gateway</artifactId>
+
+
+    <dependencies>
+
+        <!-- gateway网关-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <!--nacos服务发现客户端-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!--nacos config 服务配置 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!-- 负载均衡依赖,在gateway中必须添加此依赖才能使用服务名转发请求 例: lb://ling-order  lb就是loadbalancer-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-mp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-redis</artifactId>
+        </dependency>
+
+        <!--Mysql数据库驱动-->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>gateway-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-dubbo</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

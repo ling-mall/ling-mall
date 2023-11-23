@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ling.lingcloud</groupId>
+        <artifactId>common</artifactId>
+        <version>0.1.0</version>
+        <relativePath>../common</relativePath>
+    </parent>
+
+    <artifactId>common-web</artifactId>
+
+    <description>
+        公共核心包
+    </description>
+
+    <dependencies>
+        <!-- mybatis-plus 的一些注解,一些实体类会用到-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <!-- 这个依赖项扩展了Jackson的功能，使其能够更好地支持Java 8中的日期与时间API（JSR-310）。它允许将Java 8日期和时间类型（如java.time.LocalDate、java.time.LocalDateTime等）转换为JSON字符串，并将JSON字符串反序列化为相应的Java 8日期和时间类型。-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+
+        <!-- Hibernate Validator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- 离线ip地址库-->
+        <dependency>
+            <groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
