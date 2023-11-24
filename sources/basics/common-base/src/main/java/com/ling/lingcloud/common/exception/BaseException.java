@@ -1,7 +1,5 @@
 package com.ling.lingcloud.common.exception;
 
-import cn.hutool.core.text.CharSequenceUtil;
-import com.ling.lingcloud.common.util.MessageUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -62,17 +60,4 @@ public class BaseException extends RuntimeException {
     public BaseException(String defaultMessage) {
         this(null, null, null, defaultMessage);
     }
-
-    @Override
-    public String getMessage() {
-        String message = null;
-        if (!CharSequenceUtil.isEmpty(code)) {
-            message = MessageUtils.message(code, (Object[]) args);
-        }
-        if (message == null) {
-            message = defaultMessage;
-        }
-        return message;
-    }
-
 }

@@ -26,6 +26,7 @@
         <module>../common-web</module>
         <module>../common-service</module>
         <module>../api</module>
+        <module>../common-base</module>
     </modules>
 
     <properties>
@@ -63,6 +64,11 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-base</artifactId>
         </dependency>
     </dependencies>
 

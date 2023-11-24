@@ -3,7 +3,7 @@ package com.ling.lingcloud.account.api.exception;
 import java.io.Serializable;
 
 
-import com.ling.lingcloud.common.exception.BaseException;
+import com.ling.lingcloud.common.exception.WebBaseException;
 
 import lombok.NoArgsConstructor;
 
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
  * @author 钟舒艺
  */
 @NoArgsConstructor
-public class AccountException extends BaseException {
+public class AccountException extends WebBaseException {
     public AccountException(String code, Serializable... args) {
         super("account", code, args, null);
     }

@@ -8,7 +8,7 @@ import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ling.lingcloud.common.constants.AppConstants;
+import com.ling.lingcloud.common.mp.constants.MpConstants;
 import com.ling.lingcloud.common.mp.exception.OrderParameterException;
 import lombok.Data;
 
@@ -84,10 +84,10 @@ public class PageQuery implements Serializable {
      * @return 查询对象
      */
     public <T> Page<T> build() {
-        Long pageNum = ObjectUtil.defaultIfNull(getPageNum(), AppConstants.DEFAULT_PAGE_NUM);
-        Long pageSize = ObjectUtil.defaultIfNull(getPageSize(), AppConstants.DEFAULT_PAGE_SIZE);
+        Long pageNum = ObjectUtil.defaultIfNull(getPageNum(), MpConstants.DEFAULT_PAGE_NUM);
+        Long pageSize = ObjectUtil.defaultIfNull(getPageSize(), MpConstants.DEFAULT_PAGE_SIZE);
         if (pageNum <= 0) {
-            pageNum = AppConstants.DEFAULT_PAGE_NUM;
+            pageNum = MpConstants.DEFAULT_PAGE_NUM;
         }
         Page<T> page = new Page<>(pageNum, pageSize);
         List<OrderItem> orderItems = buildOrderItem();
