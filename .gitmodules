@@ -1,3 +1,6 @@
 [submodule "docs"]
 	path = docs
 	url = git@github.com:ling-mall/ling-docs.git
+[submodule "sources/terminals/admin-web"]
+	path = sources/terminals/admin-web
+	url = git@github.com:ling-mall/ling-admin-web.git
