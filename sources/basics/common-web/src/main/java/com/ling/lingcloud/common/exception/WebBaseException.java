@@ -17,14 +17,35 @@ import java.io.Serializable;
  */
 
 @Data
-@AllArgsConstructor
 @SuppressWarnings("unused")
-@NoArgsConstructor(force = true)
 @EqualsAndHashCode(callSuper = true)
 public class WebBaseException extends BaseException implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
+    public WebBaseException(String module, String code, Serializable[] args, String defaultMessage) {
+        super(module, code, args, defaultMessage);
+    }
+
+    public WebBaseException() {
+    }
+
+    public WebBaseException(String module, String code, Serializable[] args) {
+        super(module, code, args);
+    }
+
+    public WebBaseException(String module, String defaultMessage) {
+        super(module, defaultMessage);
+    }
+
+    public WebBaseException(String code, Serializable[] args) {
+        super(code, args);
+    }
+
+    public WebBaseException(String defaultMessage) {
+        super(defaultMessage);
+    }
 
     @Override
     public String getMessage() {
