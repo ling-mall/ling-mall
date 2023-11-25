@@ -2,7 +2,7 @@ package com.ling.lingcloud.common.security.handler;
 
 
 import com.ling.lingcloud.common.domain.R;
-import com.ling.lingcloud.common.util.MessageUtils;
+import com.ling.lingcloud.common.i18n.MessageUtils;
 
 import cn.dev33.satoken.exception.NotLoginException;
 import lombok.extern.slf4j.Slf4j;
