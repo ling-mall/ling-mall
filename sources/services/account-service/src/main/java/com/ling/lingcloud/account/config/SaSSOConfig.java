@@ -5,6 +5,8 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import cn.hutool.json.JSONUtil;
 import com.ling.lingcloud.common.domain.R;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author 钟舒艺
  */
+@Slf4j
 @Configuration
 public class SaSSOConfig {
     /**
@@ -27,6 +30,8 @@ public class SaSSOConfig {
 
         // 配置：登录处理函数
         sso.setDoLoginHandle((name, pwd) -> {
+            log.error(name);
+            log.error(pwd);
             // 此处仅做模拟登录，真实环境应该查询数据进行登录
             if ("sa".equals(name) && "123456".equals(pwd)) {
                 StpUtil.login(10001);
