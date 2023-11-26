@@ -1,4 +1,4 @@
-package com.ling.lingcloud.common.i18n;
+package com.ling.lingcloud.common.i18n.utils;
 
 import cn.hutool.extra.spring.SpringUtil;
 import lombok.AccessLevel;

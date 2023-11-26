@@ -1,4 +1,4 @@
-package com.ling.lingcloud.common.util.ip;
+package com.ling.lingcloud.common.web.util.ip;
 
 import java.io.File;
 

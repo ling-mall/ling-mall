@@ -3,7 +3,7 @@ package com.ling.lingcloud.account.api.exception;
 import java.io.Serializable;
 
 
-import com.ling.lingcloud.common.exception.WebBaseException;
+import com.ling.lingcloud.common.web.exception.WebBaseException;
 
 import lombok.NoArgsConstructor;
 

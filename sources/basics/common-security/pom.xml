@@ -18,6 +18,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-base</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

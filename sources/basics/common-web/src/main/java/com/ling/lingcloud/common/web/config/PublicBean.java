@@ -1,4 +1,4 @@
-package com.ling.lingcloud.common.config;
+package com.ling.lingcloud.common.web.config;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 

@@ -1,11 +1,11 @@
-package com.ling.lingcloud.common.handler;
+package com.ling.lingcloud.common.web.handler;
 
 import java.util.Objects;
 
 
 import com.ling.lingcloud.common.domain.R;
-import com.ling.lingcloud.common.exception.WebBaseException;
-import com.ling.lingcloud.common.util.MessageUtils;
+import com.ling.lingcloud.common.i18n.utils.MessageUtils;
+import com.ling.lingcloud.common.web.exception.WebBaseException;
 
 import cn.hutool.http.HttpStatus;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.ling.lingcloud.common.jackson;
+package com.ling.lingcloud.common.web.jackson;
 
 import java.io.IOException;
 

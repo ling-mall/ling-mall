@@ -1,4 +1,4 @@
-package com.ling.lingcloud.common.controller;
+package com.ling.lingcloud.common.web.controller;
 
 import com.ling.lingcloud.common.domain.R;
 import jakarta.servlet.RequestDispatcher;

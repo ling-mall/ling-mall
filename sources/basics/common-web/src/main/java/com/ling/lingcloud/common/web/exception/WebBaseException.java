@@ -1,11 +1,12 @@
-package com.ling.lingcloud.common.exception;
+package com.ling.lingcloud.common.web.exception;
 
 import cn.hutool.core.text.CharSequenceUtil;
-import com.ling.lingcloud.common.util.MessageUtils;
-import lombok.AllArgsConstructor;
+
+import com.ling.lingcloud.common.exception.BaseException;
+import com.ling.lingcloud.common.i18n.utils.MessageUtils;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;

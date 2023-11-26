@@ -13,7 +13,7 @@
     <artifactId>common-web</artifactId>
 
     <description>
-        公共核心包
+        web 公共包
     </description>
 
     <dependencies>
@@ -43,6 +43,16 @@
         <dependency>
             <groupId>org.lionsoul</groupId>
             <artifactId>ip2region</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-base</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-i18n</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,4 +1,4 @@
-package com.ling.lingcloud.common.config;
+package com.ling.lingcloud.common.web.config;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
-import com.ling.lingcloud.common.jackson.BigNumberSerializer;
+import com.ling.lingcloud.common.web.jackson.BigNumberSerializer;
 
 import cn.hutool.core.date.DatePattern;
 import lombok.extern.slf4j.Slf4j;

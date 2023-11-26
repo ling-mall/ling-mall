@@ -58,8 +58,8 @@
                gri.update_by   as gri_update_by,
                gri.update_time as gri_update_time,
                gri.is_deleted  as gri_is_deleted
-        from `ling-cloud`.gateway_route gr
-                 left join `ling-cloud`.gateway_route_item gri on gr.id = gri.route_id
+        from gateway_route gr
+                 left join gateway_route_item gri on gr.id = gri.route_id
         where gr.status = 1
           and gri.status = 1
     </select>

@@ -1,4 +1,4 @@
-com.ling.lingcloud.common.config.JacksonConfig
-com.ling.lingcloud.common.handler.GlobalExceptionHandler
-com.ling.lingcloud.common.config.PublicBean
-com.ling.lingcloud.common.controller.CustomErrorController
+com.ling.lingcloud.common.web.config.JacksonConfig
+com.ling.lingcloud.common.web.handler.GlobalExceptionHandler
+com.ling.lingcloud.common.web.config.PublicBean
+com.ling.lingcloud.common.web.controller.CustomErrorController

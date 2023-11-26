@@ -2,7 +2,7 @@ package com.ling.lingcloud.common.security.handler;
 
 
 import com.ling.lingcloud.common.domain.R;
-import com.ling.lingcloud.common.i18n.MessageUtils;
+import com.ling.lingcloud.common.i18n.utils.MessageUtils;
 
 import cn.dev33.satoken.exception.NotLoginException;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ public class SaTokenExceptionHandler {
     @ExceptionHandler(NotLoginException.class)
     public R<Void> handlerNotLoginException(NotLoginException nle) {
 
-        String message = "";
+        String message;
 
         if (nle.getType().equals(NotLoginException.NOT_TOKEN)) {
             message = "exception.satoken.notToken";

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
  * @author 钟舒艺
  **/
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@SuppressWarnings("unused")
 public final class Regular {
 
     /**
