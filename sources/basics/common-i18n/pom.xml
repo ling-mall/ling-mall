@@ -22,6 +22,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+
+        <!-- Spring Boot提供的一个核心库，它包含了许多自动配置类（auto-configuration class），用于自动配置、初始化和启用一些常用的Spring框架组件或第三方库-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

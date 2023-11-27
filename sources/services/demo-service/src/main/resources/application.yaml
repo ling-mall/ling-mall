@@ -35,4 +35,4 @@ spring:
 
 sa-token:
   sso:
-    auth-url: http://localhost:20000/sso/auth
+    auth-url: http://localhost:20001

@@ -1,5 +1,7 @@
 package com.ling.lingcloud.account.controller;
 
+import cn.dev33.satoken.sso.SaSsoProcessor;
+import cn.dev33.satoken.sso.SaSsoTemplate;
 import com.ling.lingcloud.common.domain.R;
 import com.ling.lingcloud.common.security.dto.LoginBody;
 
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 /**
  * 简短描述啦.
  * 详细说说
@@ -27,13 +31,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 public class SsoServerController {
+    @RequestMapping("/sso/auth")
+    public Object ssoAuth() {
+        log.info("进入 ssoAuth");
+        return SaSsoProcessor.instance.ssoAuth();
+    }
 
     @PostMapping("/sso/doLogin")
-    public R<Void> ssoDoLogin(@RequestBody LoginBody loginBody) {
+    public R<Boolean> ssoDoLogin(@RequestBody LoginBody loginBody) {
         if (loginBody.getUsername().equals("zhong") && loginBody.getPassword().equals("12345678")) {
             StpUtil.login(1);
+            return R.success(true);
         }
-        return R.success("登录成功");
+        return R.failed(403, "登录失败", false);
     }
 
     @RequestMapping("/sso/getRedirectUrl")

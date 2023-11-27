@@ -30,6 +30,11 @@
             <artifactId>common-satoken</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-i18n</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
