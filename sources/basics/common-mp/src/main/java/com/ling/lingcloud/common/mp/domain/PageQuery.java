@@ -8,8 +8,9 @@ import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ling.lingcloud.common.exception.BusinessException;
 import com.ling.lingcloud.common.mp.constants.MpConstants;
-import com.ling.lingcloud.common.mp.exception.OrderParameterException;
+import com.ling.lingcloud.common.mp.exception.CommonMpErrorCodeEnum;
 import lombok.Data;
 
 import java.io.Serial;
@@ -124,7 +125,7 @@ public class PageQuery implements Serializable {
             String columnName = split[0];
             // 检查是否符合规范
             if (!ReUtil.isMatch(PageQuery.SQL_PATTERN, columnName)) {
-                throw new OrderParameterException(columnName);
+                throw new BusinessException(CommonMpErrorCodeEnum.ORDER_PARAMETER_ERROR, columnName);
             }
             // 排序方向
             String collation = PageQuery.DEFAULT_SORTING_METHOD;

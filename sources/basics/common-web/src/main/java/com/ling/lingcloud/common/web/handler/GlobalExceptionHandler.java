@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import com.ling.lingcloud.common.domain.R;
 import com.ling.lingcloud.common.i18n.utils.MessageUtils;
-import com.ling.lingcloud.common.web.exception.WebBaseException;
+import com.ling.lingcloud.common.web.exception.WebBusinessException;
 
 import cn.hutool.http.HttpStatus;
 import lombok.extern.slf4j.Slf4j;
@@ -36,11 +36,11 @@ public class GlobalExceptionHandler {
     /**
      * 业务异常.
      */
-    @ExceptionHandler(WebBaseException.class)
-    public R<Void> handleMethodArgumentNotValidException(WebBaseException e) {
+    @ExceptionHandler(WebBusinessException.class)
+    public R<Void> handleMethodArgumentNotValidException(WebBusinessException e) {
         log.error(e.getMessage(), e);
-        log.error("捕获到 {} 模块异常: {}", e.getModule(), e.getMessage());
-        return R.failed(HttpStatus.HTTP_INTERNAL_ERROR, MessageUtils.message(e.getMessage()));
+        log.error("捕获到 {} 服务 {} 模块异常: {}", e.getErrorCode().getServerName(), e.getErrorCode().getModuleName(), e.getMessage());
+        return R.failed(e.getErrorCode().builderCode(), e.getMessage());
     }
 
 

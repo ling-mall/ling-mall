@@ -1,5 +1,6 @@
 package com.ling.lingcloud.account.api.runner;
 
+import com.ling.lingcloud.account.api.enums.UserErrorCodeEnum;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
