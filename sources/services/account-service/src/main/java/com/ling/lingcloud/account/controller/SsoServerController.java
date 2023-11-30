@@ -3,6 +3,7 @@ package com.ling.lingcloud.account.controller;
 import cn.dev33.satoken.sso.SaSsoProcessor;
 import cn.dev33.satoken.sso.SaSsoTemplate;
 import com.ling.lingcloud.common.domain.R;
+import com.ling.lingcloud.common.i18n.utils.MessageUtils;
 import com.ling.lingcloud.common.security.dto.LoginBody;
 
 import cn.dev33.satoken.sso.SaSsoConsts;
@@ -12,10 +13,7 @@ import cn.dev33.satoken.util.SaFoxUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -31,6 +29,12 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 public class SsoServerController {
+
+    @GetMapping("sso/aaa")
+    public R<String> test(){
+        return R.success(MessageUtils.message("account.user.login.exception.invalidCredentials"));
+    }
+
     @RequestMapping("/sso/auth")
     public Object ssoAuth() {
         log.info("进入 ssoAuth");

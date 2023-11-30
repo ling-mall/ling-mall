@@ -1,1 +1,1 @@
-com.ling.lingcloud.common.i18n.config.I18nAutoConfiguration
+com.ling.lingcloud.common.i18n.config.CustomMessageSourceAutoConfiguration

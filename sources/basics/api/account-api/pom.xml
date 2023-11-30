@@ -13,10 +13,6 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-web</artifactId>
-        </dependency>
     </dependencies>
 
 </project>
