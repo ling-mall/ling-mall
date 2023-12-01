@@ -1,18 +1,3 @@
-/*
- * Copyright 2023 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.ling.lingcloud.common.i18n;
 
 import lombok.extern.slf4j.Slf4j;
@@ -76,7 +61,6 @@ public class WildcardReloadableResourceBundleMessageSource extends ReloadableRes
     @Override
     protected List<String> calculateFilenamesForLocale(@NotNull String basename, @NotNull Locale locale) {
 
-        log.error("basename: {}", basename);
         // 支持 basename 用 . 表示文件层级
         basename = basename.replace(".", "/");
 
