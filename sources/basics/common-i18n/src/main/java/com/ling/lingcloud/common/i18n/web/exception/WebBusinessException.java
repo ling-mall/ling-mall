@@ -1,4 +1,4 @@
-package com.ling.lingcloud.common.web.exception;
+package com.ling.lingcloud.common.i18n.web.exception;
 
 import cn.hutool.core.text.CharSequenceUtil;
 
