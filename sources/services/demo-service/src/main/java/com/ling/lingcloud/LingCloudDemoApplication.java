@@ -9,10 +9,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
 /**
- * 凌云演示应用
+ * 演示应用
  *
  * @author 钟舒艺
- * @date 2023-09-30
  */
 @SpringBootApplication
 @EnableDiscoveryClient

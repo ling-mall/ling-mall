@@ -3,10 +3,10 @@ package com.ling.lingcloud.account.dubbo;
 
 import com.ling.lingcloud.account.api.RemoteAccountService;
 import com.ling.lingcloud.account.api.domain.AccountUser;
-import com.ling.lingcloud.account.api.exception.AccountDisableException;
-import com.ling.lingcloud.account.api.exception.AccountPasswordNotMatchException;
+import com.ling.lingcloud.account.api.enums.UserErrorCodeEnum;
 import com.ling.lingcloud.account.constant.AccountConstant;
 import com.ling.lingcloud.account.service.IAccountUserService;
+import com.ling.lingcloud.common.exception.BusinessException;
 import com.ling.lingcloud.common.security.model.LoginUser;
 import com.ling.lingcloud.common.security.service.SecurityService;
 
@@ -37,15 +37,15 @@ public class RemoteAccountServiceImpl implements RemoteAccountService {
         AccountUser accountUser = accountUserService.getUserByUserName(username);
         // 没有这个用户
         if (accountUser == null) {
-            throw new AccountPasswordNotMatchException();
+            throw new BusinessException(UserErrorCodeEnum.PASSWORD_NOT_MATCH);
         }
         // 密码错误
         if (!securityService.checkPassword(password, accountUser.getPassword())) {
-            throw new AccountPasswordNotMatchException();
+            throw new BusinessException(UserErrorCodeEnum.PASSWORD_NOT_MATCH);
         }
         // 用户被禁用
         if (accountUser.getStatus().equals(AccountConstant.UserStatus.DISABLE)) {
-            throw new AccountDisableException(accountUser.getUsername());
+            throw new BusinessException(UserErrorCodeEnum.USER_DISABLED, username);
         }
 
         LoginUser loginUser = new LoginUser();

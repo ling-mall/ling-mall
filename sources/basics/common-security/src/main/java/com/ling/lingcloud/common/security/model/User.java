@@ -1,5 +1,8 @@
 package com.ling.lingcloud.common.security.model;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
@@ -12,8 +15,9 @@ import lombok.Data;
  **/
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class User {
+public class User implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 844732306134765370L;
 
 

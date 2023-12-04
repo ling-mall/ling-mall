@@ -1,5 +1,7 @@
 package com.ling.lingcloud.common.security.model;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.Data;
@@ -12,7 +14,9 @@ import lombok.Data;
  * @author 钟舒艺
  */
 @Data
-public class LoginUser {
+public class LoginUser implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**

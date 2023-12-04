@@ -1,15 +1,21 @@
 package com.ling.lingcloud.account.controller;
 
-import cn.dev33.satoken.sso.SaSsoConsts;
 import cn.dev33.satoken.sso.SaSsoProcessor;
+import cn.dev33.satoken.sso.SaSsoTemplate;
+import com.ling.lingcloud.common.domain.R;
+import com.ling.lingcloud.common.i18n.utils.MessageUtils;
+import com.ling.lingcloud.common.security.dto.LoginBody;
+
+import cn.dev33.satoken.sso.SaSsoConsts;
 import cn.dev33.satoken.sso.SaSsoUtil;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaFoxUtil;
-import com.ling.lingcloud.common.domain.R;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * 简短描述啦.
@@ -19,16 +25,29 @@ import org.springframework.web.bind.annotation.RestController;
  * @author 钟舒艺
  */
 @Slf4j
+@Validated
 @RestController
 @RequiredArgsConstructor
 public class SsoServerController {
 
-    /*
-     * SSO-Server端：处理所有SSO相关请求 (下面的章节我们会详细列出开放的接口)
-     */
-    @RequestMapping("/sso/*")
-    public Object ssoRequest() {
-        return SaSsoProcessor.instance.serverDister();
+    @GetMapping("sso/aaa")
+    public R<String> test(){
+        return R.success(MessageUtils.message("account.user.login.exception.invalidCredentials"));
+    }
+
+    @RequestMapping("/sso/auth")
+    public Object ssoAuth() {
+        log.info("进入 ssoAuth");
+        return SaSsoProcessor.instance.ssoAuth();
+    }
+
+    @PostMapping("/sso/doLogin")
+    public R<Boolean> ssoDoLogin(@RequestBody LoginBody loginBody) {
+        if (loginBody.getUsername().equals("zhong") && loginBody.getPassword().equals("12345678")) {
+            StpUtil.login(1);
+            return R.success(true);
+        }
+        return R.failed(403, "登录失败", false);
     }
 
     @RequestMapping("/sso/getRedirectUrl")

@@ -31,23 +31,17 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--  Spring Boot提供的一个工具库，用于生成配置文件的元数据（metadata），以及为IDE提供代码补全和描述性信息  -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-        </dependency>
-
         <!--集成druid连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-web</artifactId>
+            <artifactId>common-base</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

@@ -14,11 +14,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-web</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
         </dependency>

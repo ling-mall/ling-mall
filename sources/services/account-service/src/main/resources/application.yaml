@@ -42,5 +42,9 @@ sa-token:
     ticket-timeout: 300
     # 所有允许的授权回调地址
     allow-url: "*"
-
-
+---
+spring:
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/**/*
+    encoding: UTF-8

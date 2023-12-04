@@ -1,9 +1,16 @@
 package com.ling.lingcloud.controller;
 
 import cn.dev33.satoken.sso.SaSsoProcessor;
+import cn.dev33.satoken.sso.SaSsoUtil;
 import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
+import com.ling.lingcloud.common.domain.R;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * 简短描述啦.
@@ -12,27 +19,38 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author 钟舒艺
  */
+@Slf4j
 @RestController
 public class SsoClientController {
 
-    // 首页
-    @RequestMapping("/")
-    public String index() {
-        String str = "<h2>Sa-Token SSO-Client 应用端</h2>" +
-                "<p>当前会话是否登录：" + StpUtil.isLogin() + "</p>" +
-                "<p><a href=\"javascript:location.href='/sso/login?back=' + encodeURIComponent(location.href);\">登录</a> " +
-                "<a href='/sso/logout?back=self'>注销</a></p>";
-        return str;
+
+    @GetMapping("/sso/isLogin")
+    public R<Boolean> login() {
+        return R.success(StpUtil.isLogin());
     }
 
-    /*
-     * SSO-Client端：处理所有SSO相关请求
-     *         http://{host}:{port}/sso/login          -- Client端登录地址，接受参数：back=登录后的跳转地址
-     *         http://{host}:{port}/sso/logout         -- Client端单点注销地址（isSlo=true时打开），接受参数：back=注销后的跳转地址
-     *         http://{host}:{port}/sso/logoutCall     -- Client端单点注销回调地址（isSlo=true时打开），此接口为框架回调，开发者无需关心
-     */
-    @RequestMapping("/sso/*")
-    public Object ssoRequest() {
-        return SaSsoProcessor.instance.clientDister();
+    // 返回SSO认证中心登录地址
+    @GetMapping("/sso/getSsoAuthUrl")
+    public R<String> getSsoAuthUrl(String clientLoginUrl, String backUrl) {
+        String serverAuthUrl = SaSsoUtil.buildServerAuthUrl(clientLoginUrl, backUrl);
+        return R.success(serverAuthUrl, "获取成功");
+    }
+
+
+    @GetMapping("/sso/doLoginByTicket")
+    public R<Map<String, Object>> doLoginByTicket(String ticket) {
+        log.info("ticket:" + ticket);
+        Object loginId = SaSsoProcessor.instance.checkTicket(ticket, "/sso/doLoginByTicket");
+        if (loginId != null) {
+            StpUtil.login(loginId);
+            return R.success(Map.of("token", StpUtil.getTokenValue()));
+        }
+        return R.failed(400, "ticket无效", null);
+    }
+
+    @GetMapping("/sso/logout")
+    public R<Void> logout() {
+        StpUtil.logout();
+        return R.success();
     }
 }

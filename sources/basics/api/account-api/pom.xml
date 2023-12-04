@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-web</artifactId>
+            <artifactId>common-base</artifactId>
         </dependency>
     </dependencies>
 
