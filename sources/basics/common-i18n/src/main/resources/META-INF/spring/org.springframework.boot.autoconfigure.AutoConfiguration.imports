@@ -1,1 +1,2 @@
 com.ling.lingcloud.common.i18n.config.CustomMessageSourceAutoConfiguration
+com.ling.lingcloud.common.i18n.web.handler.I18nWebGlobalExceptionHandler
