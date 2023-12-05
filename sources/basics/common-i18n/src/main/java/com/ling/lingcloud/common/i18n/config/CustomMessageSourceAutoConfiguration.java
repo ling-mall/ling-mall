@@ -51,6 +51,7 @@ public class CustomMessageSourceAutoConfiguration {
 
     @Bean
     public MessageSource messageSource(MessageSourceProperties properties) {
+        log.error("messageSource");
         WildcardReloadableResourceBundleMessageSource messageSource = new WildcardReloadableResourceBundleMessageSource();
         if (StringUtils.hasText(properties.getBasename())) {
             messageSource.setBasenames(StringUtils

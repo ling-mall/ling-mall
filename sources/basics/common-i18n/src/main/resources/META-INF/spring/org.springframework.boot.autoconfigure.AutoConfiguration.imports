@@ -1,2 +1,4 @@
 com.ling.lingcloud.common.i18n.config.CustomMessageSourceAutoConfiguration
 com.ling.lingcloud.common.i18n.web.handler.I18nWebGlobalExceptionHandler
+com.ling.lingcloud.common.i18n.config.I18nMessageSourceAutoConfiguration
+com.ling.lingcloud.common.i18n.config.I18nValidationConfiguration

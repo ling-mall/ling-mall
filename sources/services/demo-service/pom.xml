@@ -15,8 +15,8 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-web</artifactId>
         </dependency>
 
         <dependency>
@@ -33,6 +33,16 @@
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
             <artifactId>common-i18n</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-base</artifactId>
         </dependency>
 
     </dependencies>

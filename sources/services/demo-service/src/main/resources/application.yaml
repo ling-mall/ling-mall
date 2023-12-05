@@ -5,7 +5,6 @@ spring:
     name: lingcloud-demo
   profiles:
     active: @profiles.active@
-
 --- # nacos 配置
 spring:
   cloud:
@@ -36,3 +35,4 @@ spring:
 sa-token:
   sso:
     auth-url: http://localhost:20001
+
