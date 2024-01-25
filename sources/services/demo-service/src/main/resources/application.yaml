@@ -30,9 +30,22 @@ spring:
     import:
       - optional:nacos:${spring.application.name}-service.${spring.cloud.nacos.config.file-extension}
       - optional:nacos:lingcloud-common-other.${spring.cloud.nacos.config.file-extension}
+      - optional:nacos:lingcloud-common-resources.${spring.cloud.nacos.config.file-extension}
 ---
 
 sa-token:
   sso:
     auth-url: http://localhost:20001
+
+---
+
+flowable:
+  # 对流程进行验证
+  check-process-definitions: true
+  #  process-definition-location-prefix: /processes
+  process-definition-location-suffixes: "**.bpmn20.xml, **.bpmn"
+logging:
+  level:
+    org.flowable.task.service.impl.persistence.entity.*: debug
+    org.flowable.engine.impl.persistence.entity.*: debug
 
