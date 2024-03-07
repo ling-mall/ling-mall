@@ -28,6 +28,7 @@
         <module>../api</module>
         <module>../common-base</module>
         <module>../common-i18n</module>
+        <module>../common-datascope</module>
     </modules>
 
     <properties>
