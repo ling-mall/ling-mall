@@ -2,7 +2,7 @@ package com.ling.lingcloud.account.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ling.lingcloud.account.api.domain.AccountUser;
+import com.ling.lingcloud.account.api.entity.AccountUser;
 
 /**
  * 账户持久层.

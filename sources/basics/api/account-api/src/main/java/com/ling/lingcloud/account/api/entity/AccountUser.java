@@ -1,4 +1,4 @@
-package com.ling.lingcloud.account.api.domain;
+package com.ling.lingcloud.account.api.entity;
 
 import java.io.Serial;
 

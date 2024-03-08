@@ -2,7 +2,7 @@ package com.ling.lingcloud.account.dubbo;
 
 
 import com.ling.lingcloud.account.api.RemoteAccountService;
-import com.ling.lingcloud.account.api.domain.AccountUser;
+import com.ling.lingcloud.account.api.entity.AccountUser;
 import com.ling.lingcloud.account.api.enums.UserErrorCodeEnum;
 import com.ling.lingcloud.account.constant.AccountConstant;
 import com.ling.lingcloud.account.service.IAccountUserService;

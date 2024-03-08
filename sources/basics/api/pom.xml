@@ -17,6 +17,7 @@
     <modules>
         <module>account-api</module>
         <module>gateway-api</module>
+        <module>admin-api</module>
     </modules>
 
 </project>

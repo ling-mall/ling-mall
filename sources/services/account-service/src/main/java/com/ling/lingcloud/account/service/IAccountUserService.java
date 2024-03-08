@@ -1,7 +1,7 @@
 package com.ling.lingcloud.account.service;
 
 
-import com.ling.lingcloud.account.api.domain.AccountUser;
+import com.ling.lingcloud.account.api.entity.AccountUser;
 
 /**
  * 账户服务接口.

@@ -1,7 +1,7 @@
 package com.ling.lingcloud.account.service.impl;
 
 
-import com.ling.lingcloud.account.api.domain.AccountUser;
+import com.ling.lingcloud.account.api.entity.AccountUser;
 import com.ling.lingcloud.account.mapper.AccountUserMapper;
 import com.ling.lingcloud.account.service.IAccountUserService;
 
