@@ -143,10 +143,4 @@ public class PageQuery implements Serializable {
         });
         return orderItemList;
     }
-
-    public static void main(String[] args) {
-        PageQuery pageQuery = new PageQuery();
-        pageQuery.setOrderBy("age:asc,time:desc");
-        System.out.println(pageQuery.buildOrderItem().toString());
-    }
 }

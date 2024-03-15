@@ -1,20 +1,37 @@
-package com.ling.lingcloud.common.mp.exception;
+package com.ling.lingcloud.common.web.exception;
 
-import com.alibaba.druid.wall.violation.ErrorCode;
 import com.ling.lingcloud.common.exception.ErrorManager;
-import com.ling.lingcloud.common.exception.IErrorCode;
 import lombok.Getter;
 
 /**
- * Mybatis Plus 模块错误码枚举.
- * Class created on 2023/11/29 by 钟舒艺
+ * Web 错误码枚举.
+ * Class created on 2024/3/12 by 钟舒艺
  *
  * @author 钟舒艺
  */
 @Getter
-public enum CommonMpErrorCodeEnum implements ICommonMpErrorCode {
+public enum CommonWebErrorCodeEnum implements ICommonWebErrorCode {
 
-    ORDER_PARAMETER_ERROR(1, 1, "common.mp.exception.OrderParameter", new String[]{"columnName"});
+    /**
+     * 路径不存在
+     */
+    NOT_FOUND(1, 1, "common.web.request.exception.notFound", new String[]{"url"}),
+    /**
+     * 未知错误
+     */
+    UNKNOWN_ERROR(3, 2, "common.web.request.exception.unknown", new String[]{}),
+    /**
+     * 请求参数错误
+     */
+    PARAMETER_ERROR(1, 1, "common.web.request.error.parameter", new String[]{"errorMessage"}),
+    /**
+     * 服务端错误
+     */
+    SERVER_ERROR(3, 2, "common.web.request.error.server", new String[]{}),
+    /**
+     * 第三方服务错误
+     */
+    THIRD_PARTY_ERROR(2, 3, "common.web.request.error.thirdParty", new String[]{"errorMessage"});
 
     /**
      * 责任方
@@ -37,12 +54,13 @@ public enum CommonMpErrorCodeEnum implements ICommonMpErrorCode {
      */
     private final String messageCode;
 
+
     /**
      * i18n 参数名称列表
      */
     private final String[] parameters;
 
-    CommonMpErrorCodeEnum(Integer responsibleParty, Integer serialId, String messageCode, String[] parameters) {
+    CommonWebErrorCodeEnum(Integer responsibleParty, Integer serialId, String messageCode, String[] parameters) {
         this.responsibleParty = responsibleParty;
         this.serialId = serialId;
         this.messageCode = messageCode;

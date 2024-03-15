@@ -1,5 +1,4 @@
 com.ling.lingcloud.common.web.config.JacksonConfig
 com.ling.lingcloud.common.web.config.PublicBean
-com.ling.lingcloud.common.web.controller.CustomErrorController
 com.ling.lingcloud.common.web.handler.WebGlobalExceptionHandler
 com.ling.lingcloud.common.web.validation.WebValidationAutoConfiguration

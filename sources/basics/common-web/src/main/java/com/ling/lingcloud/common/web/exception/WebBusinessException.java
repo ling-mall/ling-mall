@@ -1,11 +1,9 @@
-package com.ling.lingcloud.common.i18n.web.exception;
+package com.ling.lingcloud.common.web.exception;
 
 import cn.hutool.core.text.CharSequenceUtil;
-
 import com.ling.lingcloud.common.exception.BusinessException;
 import com.ling.lingcloud.common.exception.IErrorCode;
-import com.ling.lingcloud.common.i18n.utils.MessageUtils;
-
+import com.ling.lingcloud.common.web.util.MessageUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

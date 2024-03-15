@@ -1,5 +1,7 @@
 package com.ling.lingcloud.common.exception;
 
+import cn.hutool.core.util.StrUtil;
+
 import java.util.HashMap;
 
 /**
@@ -13,7 +15,7 @@ public class ErrorManager {
     /**
      * 全局错误码 map
      */
-    public final static HashMap<Integer, IErrorCode> ERROR_CODE_MAP = new HashMap<>();
+    public final static HashMap<String, IErrorCode> ERROR_CODE_MAP = new HashMap<>();
 
     /**
      * 服务名 map
@@ -31,11 +33,16 @@ public class ErrorManager {
      * @param errorCode 错误码对象
      */
     public static void register(IErrorCode errorCode) {
+        // 公共错误码不校验
+        if ("common".equals(errorCode.getServerName()) && "common".equals(errorCode.getModuleName())) {
+            return;
+        }
+
         if (errorCode.getResponsibleParty() == null) {
             throw new IllegalArgumentException("责任方不能为空");
         }
 
-        if (errorCode.getServerName() == null) {
+        if (StrUtil.isEmpty(errorCode.getServerName())) {
             throw new IllegalArgumentException("服务名不能为空");
         }
 
@@ -43,7 +50,7 @@ public class ErrorManager {
             throw new IllegalArgumentException("服务id不能为空且不能为0");
         }
 
-        if (errorCode.getModuleName() == null) {
+        if (StrUtil.isEmpty(errorCode.getModuleName())) {
             throw new IllegalArgumentException("模块名不能为空");
         }
 
@@ -53,10 +60,6 @@ public class ErrorManager {
 
         if (errorCode.getSerialId() == null || errorCode.getSerialId() == 0) {
             throw new IllegalArgumentException("错误码序号不能为空且不能为0");
-        }
-
-        if (errorCode.getMessageCode() == null) {
-            throw new IllegalArgumentException("错误码不能为空");
         }
 
         String serviceName = ERROR_SERVICE_MAP.get(errorCode.getServerId());
@@ -72,7 +75,7 @@ public class ErrorManager {
         ERROR_SERVICE_MAP.put(errorCode.getServerId(), errorCode.getServerName());
         ERROR_MODULE_MAP.put(new Integer[]{errorCode.getServerId(), errorCode.getModuleId()}, errorCode.getModuleName());
 
-        Integer code = errorCode.builderCode();
+        String code = errorCode.builderCode();
         assert !ERROR_CODE_MAP.containsKey(code) : "错误码重复";
         ERROR_CODE_MAP.put(code, errorCode);
     }

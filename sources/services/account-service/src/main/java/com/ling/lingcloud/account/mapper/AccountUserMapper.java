@@ -3,6 +3,7 @@ package com.ling.lingcloud.account.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ling.lingcloud.account.api.entity.AccountUser;
+import org.springframework.stereotype.Repository;
 
 /**
  * 账户持久层.
@@ -10,6 +11,7 @@ import com.ling.lingcloud.account.api.entity.AccountUser;
  *
  * @author 钟舒艺
  */
+@Repository
 public interface AccountUserMapper extends BaseMapper<AccountUser> {
 
     /**

@@ -1,6 +1,7 @@
 package com.ling.lingcloud.account.service.impl;
 
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ling.lingcloud.account.api.entity.AccountUser;
 import com.ling.lingcloud.account.mapper.AccountUserMapper;
 import com.ling.lingcloud.account.service.IAccountUserService;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class AccountUserRepositoryServiceImpl implements IAccountUserService {
+public class AccountUserServiceImpl implements IAccountUserService {
 
     private final AccountUserMapper accountUserMapper;
 

@@ -1,20 +1,22 @@
-package com.ling.lingcloud.common.mp.exception;
+package com.ling.lingcloud.common.web.exception;
 
-import com.alibaba.druid.wall.violation.ErrorCode;
 import com.ling.lingcloud.common.exception.ErrorManager;
 import com.ling.lingcloud.common.exception.IErrorCode;
 import lombok.Getter;
 
 /**
- * Mybatis Plus 模块错误码枚举.
- * Class created on 2023/11/29 by 钟舒艺
+ * 通用状态码.
+ * Class created on 2024/3/13 by 钟舒艺
  *
  * @author 钟舒艺
  */
 @Getter
-public enum CommonMpErrorCodeEnum implements ICommonMpErrorCode {
+public enum CommonCodeEnum implements IErrorCode {
 
-    ORDER_PARAMETER_ERROR(1, 1, "common.mp.exception.OrderParameter", new String[]{"columnName"});
+    /**
+     * 操作成功
+     */
+    SUCCESS(0, 0, "common.web.request.success", new String[]{});
 
     /**
      * 责任方
@@ -37,12 +39,34 @@ public enum CommonMpErrorCodeEnum implements ICommonMpErrorCode {
      */
     private final String messageCode;
 
+
     /**
      * i18n 参数名称列表
      */
     private final String[] parameters;
 
-    CommonMpErrorCodeEnum(Integer responsibleParty, Integer serialId, String messageCode, String[] parameters) {
+
+    @Override
+    public Integer getResponsibleParty() {
+        return 0;
+    }
+
+    @Override
+    public Integer getServerId() {
+        return 0;
+    }
+
+    @Override
+    public Integer getModuleId() {
+        return 0;
+    }
+
+    @Override
+    public String getModuleName() {
+        return "common";
+    }
+
+    CommonCodeEnum(Integer responsibleParty, Integer serialId, String messageCode, String[] parameters) {
         this.responsibleParty = responsibleParty;
         this.serialId = serialId;
         this.messageCode = messageCode;

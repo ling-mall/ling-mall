@@ -4,8 +4,8 @@ import cn.dev33.satoken.config.SaSsoConfig;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import cn.hutool.json.JSONUtil;
-import com.ling.lingcloud.common.domain.R;
 
+import com.ling.lingcloud.common.web.domain.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +26,7 @@ public class SaSSOConfig {
     @Autowired
     private void configSso(SaSsoConfig sso) {
         // 配置：未登录时返回的View
-        sso.setNotLoginView(() -> JSONUtil.toJsonStr(R.failed(401, "未登录")));
+        sso.setNotLoginView(() -> JSONUtil.toJsonStr(R.success(401, "未登录")));
 
         // 配置：登录处理函数
         sso.setDoLoginHandle((name, pwd) -> {

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author 钟舒艺
  */
 @Service
-public class AccountPlatformRepositoryServiceImpl implements IAccountPlatformService {
+public class AccountPlatformServiceImpl implements IAccountPlatformService {
 
 
 }

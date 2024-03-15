@@ -1,24 +1,27 @@
-package com.ling.lingcloud.common.mp.exception;
+package com.ling.lingcloud.common.web.exception;
 
 import com.ling.lingcloud.common.exception.IErrorCode;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * Mybatis plus异常码 接口.
- * Class created on 2023/11/29 by 钟舒艺
+ * Web 错误码.
+ * Class created on 2024/3/12 by 钟舒艺
  *
  * @author 钟舒艺
  */
-public interface ICommonMpErrorCode extends IErrorCode {
+public interface ICommonWebErrorCode extends IErrorCode {
+
 
     /**
      * 模块名
      */
-    String MODULE_NAME = "mp";
+    String MODULE_NAME = "web";
 
     /**
      * 模块id
      */
     Integer MODULE_ID = 1;
+
 
     @Override
     default Integer getModuleId() {

@@ -1,5 +1,8 @@
 package com.ling.lingcloud.common.exception;
 
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.extra.spring.SpringUtil;
+import com.ling.lingcloud.common.config.CustomConfig;
 import lombok.Getter;
 
 /**
@@ -24,12 +27,16 @@ public interface IErrorCode {
     /**
      * 微服务标识（一级宏观错误码）
      */
-    Integer getServerId();
+   default Integer getServerId(){
+       return SpringUtil.getBean(CustomConfig.class).getApp().getServiceId();
+   }
 
     /**
      * 服务名
      */
-    String getServerName();
+    default  String getServerName(){
+        return SpringUtil.getProperty("spring.application.name");
+    };
 
     /**
      * 模块id （二级宏观错误码）
@@ -56,13 +63,8 @@ public interface IErrorCode {
      *
      * @return 错误码
      */
-    default Integer builderCode() {
-        return Integer.valueOf(
-                getResponsibleParty().toString() +
-                        String.format("%02d", getServerId()) +
-                        String.format("%02d", getModuleId()) +
-                        String.format("%02d", getSerialId())
-        );
+    default String builderCode() {
+        return StrUtil.join("", getResponsibleParty().toString(), String.format("%02d", getServerId()), String.format("%02d", getModuleId()), String.format("%02d", getSerialId()));
     }
 }
 

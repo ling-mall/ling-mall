@@ -1,10 +1,8 @@
 package com.ling.lingcloud.common.security.handler;
 
 
-import com.ling.lingcloud.common.domain.R;
-import com.ling.lingcloud.common.i18n.utils.MessageUtils;
-
 import cn.dev33.satoken.exception.NotLoginException;
+import com.ling.lingcloud.common.domain.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -26,7 +24,7 @@ public class SaTokenExceptionHandler {
      * @return 通用返回结果
      */
     @ExceptionHandler(NotLoginException.class)
-    public R<Void> handlerNotLoginException(NotLoginException nle) {
+    public String handlerNotLoginException(NotLoginException nle) {
 
         String message;
 
@@ -45,6 +43,7 @@ public class SaTokenExceptionHandler {
         }
         log.error(nle.getMessage());
         // 返回给前端
-        return R.failed(401, MessageUtils.message(message));
+//        return R.failed(401, MessageUtils.message(message));
+        return message;
     }
 }
