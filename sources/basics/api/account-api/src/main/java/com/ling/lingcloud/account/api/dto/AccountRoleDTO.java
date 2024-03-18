@@ -1,10 +1,12 @@
 package com.ling.lingcloud.account.api.dto;
 
+import com.ling.lingcloud.common.domain.base.BaseDTO;
 import com.ling.lingcloud.common.validation.ValidationGroups;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -15,24 +17,19 @@ import java.io.Serializable;
  *
  * @author 钟舒艺
  */
-@Data
 
-public class AccountRoleDTO implements Serializable {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class AccountRoleDTO extends BaseDTO {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    /**
-     * id.
-     */
-    @NotNull(message = "主键不能为空", groups = {ValidationGroups.Edit.class})
-    @Min(value = 0, message = "id最低为0", groups = {ValidationGroups.Edit.class})
-    private Long id;
 
     /**
      * 角色名称
      */
-    @NotEmpty(message = "{account.role.validation.roleName.empty}:{}")
+    @NotEmpty(message = "{account.role.validation.roleName}:{}")
     private String roleName;
 
     /**

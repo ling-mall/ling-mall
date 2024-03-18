@@ -124,6 +124,13 @@
                 </exclusions>
             </dependency>
 
+            <!--mybatis-plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>3.5.5</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
@@ -223,7 +230,7 @@
 
             <dependency>
                 <groupId>com.ling.lingcloud</groupId>
-                <artifactId>common-web</artifactId>
+                <artifactId>common-spring-boot-starter-web</artifactId>
                 <version>0.1.0</version>
             </dependency>
 
@@ -235,7 +242,7 @@
 
             <dependency>
                 <groupId>com.ling.lingcloud</groupId>
-                <artifactId>common-dubbo</artifactId>
+                <artifactId>common-spring-boot-starter-dubbo</artifactId>
                 <version>0.1.0</version>
             </dependency>
 
@@ -247,19 +254,19 @@
 
             <dependency>
                 <groupId>com.ling.lingcloud</groupId>
-                <artifactId>common-satoken</artifactId>
+                <artifactId>common-spring-boot-starter-satoken</artifactId>
                 <version>0.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>com.ling.lingcloud</groupId>
-                <artifactId>common-mp</artifactId>
+                <artifactId>common-spring-boot-starter-mp</artifactId>
                 <version>0.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>com.ling.lingcloud</groupId>
-                <artifactId>common-redis</artifactId>
+                <artifactId>common-spring-boot-starter-redis</artifactId>
                 <version>0.1.0</version>
             </dependency>
 
@@ -277,13 +284,13 @@
 
             <dependency>
                 <groupId>com.ling.lingcloud</groupId>
-                <artifactId>common-base</artifactId>
+                <artifactId>common-spring-boot-starter-base</artifactId>
                 <version>0.1.0</version>
             </dependency>
 
             <dependency>
                 <groupId>com.ling.lingcloud</groupId>
-                <artifactId>common-i18n</artifactId>
+                <artifactId>common-spring-boot-starter-i18n</artifactId>
                 <version>0.1.0</version>
             </dependency>
         </dependencies>

@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ReUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ling.lingcloud.common.constants.Regular;
-import com.ling.lingcloud.common.mp.domain.PageInfo;
+import com.ling.lingcloud.common.mp.domain.PageResult;
 import com.ling.lingcloud.common.mp.domain.PageQuery;
 import com.ling.lingcloud.gateway.api.RemoteGatewayService;
 import com.ling.lingcloud.gateway.api.domain.GatewayRoute;
@@ -47,8 +47,8 @@ public class RemoteGatewayServiceImpl implements RemoteGatewayService {
     private final DynamicRouteService dynamicRouteService;
 
     @Override
-    public PageInfo<GatewayRoute> listPageGatewayRoute(GatewayRouteDTO dto, PageQuery pageQuery) {
-        return PageInfo.build(
+    public PageResult<GatewayRoute> listPageGatewayRoute(GatewayRouteDTO dto, PageQuery pageQuery) {
+        return PageResult.build(
                 gatewayRouteMapper.selectPage(
                         pageQuery.build(),
                         Wrappers.lambdaQuery(BeanUtil.copyProperties(dto, GatewayRoute.class))

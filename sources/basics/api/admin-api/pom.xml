@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-base</artifactId>
+            <artifactId>common-spring-boot-starter-base</artifactId>
         </dependency>
 
         <dependency>
