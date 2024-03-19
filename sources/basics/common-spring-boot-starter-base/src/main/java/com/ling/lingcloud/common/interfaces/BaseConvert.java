@@ -76,5 +76,5 @@ public interface BaseConvert<V, D, E> {
      * @param dto 视图对象集合
      * @return 实体对象集合.
      */
-    List<E> dtoListToEntityList(List<V> dto);
+    List<E> dtoListToEntityList(List<D> dto);
 }

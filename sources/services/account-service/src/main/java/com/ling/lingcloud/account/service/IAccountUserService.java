@@ -38,7 +38,7 @@ public interface IAccountUserService {
      * 分页查询账号.
      *
      * @param accountUserDTO 查询条件
-     * @param pageQuery   分页条件
+     * @param pageQuery      分页条件
      * @return 分页信息
      */
     PageResult<AccountUserVO> listPageAccountUser(AccountUserDTO accountUserDTO, PageQuery pageQuery);
@@ -50,6 +50,14 @@ public interface IAccountUserService {
      * @return 是否保存成功
      */
     Boolean saveAccountUser(AccountUserDTO accountUser);
+
+    /**
+     * 批量保存账号.
+     *
+     * @param accountUserList 账号信息列表
+     * @return 是否保存成功
+     */
+    Boolean saveAccountUserList(List<AccountUserDTO> accountUserList);
 
     /**
      * 更新账号.
@@ -72,8 +80,8 @@ public interface IAccountUserService {
     /**
      * 检查用户名是否重复.
      *
-     * @param sysAdminDTO 用户信息
+     * @param userDTO 用户信息
      * @return 是否重复
      */
-    Boolean checkUsernameUnique(AccountUserDTO sysAdminDTO);
+    Boolean checkUsernameUnique(AccountUserDTO userDTO);
 }
