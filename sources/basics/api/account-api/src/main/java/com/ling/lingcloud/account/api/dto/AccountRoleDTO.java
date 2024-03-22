@@ -52,4 +52,14 @@ public class AccountRoleDTO extends BaseDTO {
      */
     private Integer status;
 
+    /**
+     * 父id
+     */
+    private Long parentId;
+
+    /**
+     * 父id列表
+     */
+    private String parentList;
+
 }

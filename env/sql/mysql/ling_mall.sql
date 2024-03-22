@@ -87,40 +87,6 @@ LOCK TABLES `account_authority_type` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `account_authority_type_authority`
---
-
-DROP TABLE IF EXISTS `account_authority_type_authority`;
-/*!40101 SET @saved_cs_client = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `account_authority_type_authority`
-(
-    `id`                bigint unsigned NOT NULL AUTO_INCREMENT,
-    `authority_id`      bigint unsigned NOT NULL COMMENT '权限ID',
-    `authority_type_id` bigint unsigned NOT NULL COMMENT '权限类型ID',
-    `create_time`       datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    PRIMARY KEY (`id`),
-    KEY `idx_authority_id` (`authority_id`),
-    KEY `idx_authority_type_id` (`authority_type_id`),
-    CONSTRAINT `fk_account_authority_type_authority` FOREIGN KEY (`authority_id`) REFERENCES `account_authority` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `fk_account_authority_type_authority_type` FOREIGN KEY (`authority_type_id`) REFERENCES `account_authority_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci COMMENT ='权限与权限类型关联表';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `account_authority_type_authority`
---
-
-LOCK TABLES `account_authority_type_authority` WRITE;
-/*!40000 ALTER TABLE `account_authority_type_authority`
-    DISABLE KEYS */;
-/*!40000 ALTER TABLE `account_authority_type_authority`
-    ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `account_dept`
 --
 
@@ -135,7 +101,7 @@ CREATE TABLE `account_dept`
     `order_no`    int             DEFAULT '0' COMMENT '显示顺序',
     `leader`      varchar(20)     DEFAULT NULL COMMENT '负责人',
     `phone`       varchar(11)     DEFAULT NULL COMMENT '联系电话',
-    `parent_list` varchar(60)     DEFAULT '祖级列表',
+    `parent_list` varchar(60)     DEFAULT '' COMMENT '祖级列表',
     `email`       varchar(50)     DEFAULT NULL COMMENT '邮箱',
     `create_by`   varchar(64)     DEFAULT '' COMMENT '创建者',
     `create_time` datetime        DEFAULT NULL COMMENT '创建时间',
@@ -228,6 +194,40 @@ LOCK TABLES `account_group` WRITE;
 /*!40000 ALTER TABLE `account_group`
     DISABLE KEYS */;
 /*!40000 ALTER TABLE `account_group`
+    ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_group_role`
+--
+
+DROP TABLE IF EXISTS `account_group_role`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `account_group_role`
+(
+    `id`          bigint unsigned NOT NULL AUTO_INCREMENT,
+    `group_id`    bigint unsigned NOT NULL COMMENT '用户组ID',
+    `role_id`     bigint unsigned NOT NULL COMMENT '角色ID',
+    `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (`id`),
+    KEY `idx_group_id` (`group_id`),
+    KEY `idx_role_id` (`role_id`),
+    CONSTRAINT `account_group_role_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `account_group` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `account_group_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `account_role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci COMMENT ='用户组角色关联表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_group_role`
+--
+
+LOCK TABLES `account_group_role` WRITE;
+/*!40000 ALTER TABLE `account_group_role`
+    DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_group_role`
     ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,6 +325,8 @@ CREATE TABLE `account_role`
     `update_time` datetime                  DEFAULT NULL COMMENT '更新时间',
     `remark`      varchar(500)              DEFAULT NULL COMMENT '备注',
     `is_deleted`  tinyint(1)                DEFAULT '0' COMMENT '逻辑删除标识',
+    `parent_id`   bigint unsigned           DEFAULT '0' COMMENT '父id',
+    `parent_list` varchar(60)               DEFAULT '' COMMENT '父级id列表',
     PRIMARY KEY (`id`),
     KEY `ums_role_status_index` (`status`)
 ) ENGINE = InnoDB
@@ -378,6 +380,40 @@ LOCK TABLES `account_role_authority` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `account_role_constraint`
+--
+
+DROP TABLE IF EXISTS `account_role_constraint`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `account_role_constraint`
+(
+    `id`                bigint unsigned  NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+    `constraint_type`   tinyint unsigned NOT NULL COMMENT '约束类型 0: 角色数量约束 1: 角色互斥约束 2: 先决条件约束',
+    `business_type`     tinyint unsigned NOT NULL COMMENT '业务类型 0: 用户角色 1: 用户组角色',
+    `business_id`       bigint unsigned  NOT NULL COMMENT '业务ID',
+    `role_id`           bigint unsigned  NOT NULL COMMENT '角色ID',
+    `target_role_id`    bigint unsigned  NOT NULL COMMENT '目标角色ID',
+    `cardinality_count` int unsigned              DEFAULT '0' COMMENT '角色数量(基数约束数量)',
+    `create_time`       datetime         NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci COMMENT ='角色约束表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_role_constraint`
+--
+
+LOCK TABLES `account_role_constraint` WRITE;
+/*!40000 ALTER TABLE `account_role_constraint`
+    DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_role_constraint`
+    ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `account_user`
 --
 
@@ -420,6 +456,41 @@ INSERT INTO `account_user`
 VALUES (1, 'admin', 'admin@qq.com', '17607952136', '$2a$10$KMjutg4g1Rx2CW1WNC0W/.zdGkXDhSGy939Ne3gzO4mToziqxDVA6', 1,
         '', 0, '', 0, '', 0, '2023-08-19 18:51:18', 0, '2023-08-19 18:55:44', 0);
 /*!40000 ALTER TABLE `account_user`
+    ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_user_authority`
+--
+
+DROP TABLE IF EXISTS `account_user_authority`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `account_user_authority`
+(
+    `id`           bigint unsigned NOT NULL AUTO_INCREMENT,
+    `user_id`      bigint unsigned NOT NULL COMMENT '用户ID',
+    `authority_id` bigint unsigned NOT NULL COMMENT '权限ID',
+    `type`         tinyint(1)      NOT NULL COMMENT '类型 0授权 1禁用',
+    `create_time`  datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (`id`),
+    KEY `authority_id` (`authority_id`),
+    KEY `user_id` (`user_id`),
+    CONSTRAINT `account_user_authority_ibfk_1` FOREIGN KEY (`authority_id`) REFERENCES `account_authority` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `account_user_authority_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `account_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci COMMENT ='用户权限关联表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_user_authority`
+--
+
+LOCK TABLES `account_user_authority` WRITE;
+/*!40000 ALTER TABLE `account_user_authority`
+    DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_user_authority`
     ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -592,4 +663,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-18 17:13:15
+-- Dump completed on 2024-03-22 17:41:53

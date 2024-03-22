@@ -3,7 +3,6 @@ package com.ling.lingcloud.common.exception;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import com.ling.lingcloud.common.config.CustomConfig;
-import lombok.Getter;
 
 /**
  * 错误码.

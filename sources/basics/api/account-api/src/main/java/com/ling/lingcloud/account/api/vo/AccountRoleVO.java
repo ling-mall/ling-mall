@@ -46,4 +46,14 @@ public class AccountRoleVO implements Serializable {
      * 角色状态（1 启用 0 禁用）
      */
     private Integer status;
+
+    /**
+     * 父id
+     */
+    private Long parentId;
+
+    /**
+     * 父id列表
+     */
+    private String parentList;
 }

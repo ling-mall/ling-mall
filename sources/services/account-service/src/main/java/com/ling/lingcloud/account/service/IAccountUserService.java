@@ -44,6 +44,14 @@ public interface IAccountUserService {
     PageResult<AccountUserVO> listPageAccountUser(AccountUserDTO accountUserDTO, PageQuery pageQuery);
 
     /**
+     * 根据ID列表查询账号.
+     *
+     * @param ids ID列表
+     * @return 账号信息列表
+     */
+    List<AccountUserVO> listAccountUserByIds(List<Long> ids);
+
+    /**
      * 保存账号.
      *
      * @param accountUser 账号信息

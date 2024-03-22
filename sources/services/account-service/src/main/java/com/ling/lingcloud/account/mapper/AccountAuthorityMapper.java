@@ -5,7 +5,7 @@ import com.ling.lingcloud.account.api.entity.AccountAuthority;
 import org.springframework.stereotype.Repository;
 
 /**
- * 权限持久层.
+ * 权限服务.
  * Class created on 2024/3/12 by 钟舒艺
  *
  * @author 钟舒艺
