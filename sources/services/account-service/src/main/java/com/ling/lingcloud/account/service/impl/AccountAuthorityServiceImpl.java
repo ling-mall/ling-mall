@@ -1,15 +1,17 @@
 package com.ling.lingcloud.account.service.impl;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.extension.toolkit.Db;
 import com.ling.lingcloud.account.api.convert.AccountAuthorityConvert;
 import com.ling.lingcloud.account.api.dto.AccountAuthorityDTO;
 import com.ling.lingcloud.account.api.entity.AccountAuthority;
+import com.ling.lingcloud.account.api.vo.AccountAuthorityVO;
 import com.ling.lingcloud.account.mapper.AccountAuthorityMapper;
 import com.ling.lingcloud.account.service.IAccountAuthorityService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * 权限服务实现类.
@@ -23,6 +25,11 @@ public class AccountAuthorityServiceImpl implements IAccountAuthorityService {
 
     private final AccountAuthorityMapper accountAuthorityMapper;
 
+
+    @Override
+    public List<AccountAuthorityVO> listAuthorityByIds(List<Long> ids) {
+        return AccountAuthorityConvert.INSTANCE.convertToVOList(accountAuthorityMapper.selectBatchIds(ids));
+    }
 
     @Override
     public Boolean addAuthority(AccountAuthorityDTO accountAuthorityDTO) {

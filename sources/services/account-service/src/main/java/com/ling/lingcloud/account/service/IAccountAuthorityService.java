@@ -1,6 +1,7 @@
 package com.ling.lingcloud.account.service;
 
 import com.ling.lingcloud.account.api.dto.AccountAuthorityDTO;
+import com.ling.lingcloud.account.api.vo.AccountAuthorityVO;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface IAccountAuthorityService {
      * @param ids 权限id
      * @return 权限信息
      */
-    List<AccountAuthorityDTO> listAuthorityByIds(List<Long> ids);
+    List<AccountAuthorityVO> listAuthorityByIds(List<Long> ids);
 
 
     /**

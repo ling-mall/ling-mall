@@ -56,4 +56,9 @@ public class AccountDept extends BaseEntity {
      * 邮箱.
      */
     private String email;
+
+    /**
+     * 部门类型 0:公司 1:部门 2:岗位
+     */
+    private Integer type;
 }

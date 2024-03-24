@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.1.0, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: ling_mall
 -- ------------------------------------------------------
--- Server version	8.1.0
+-- Server version	8.0.33
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT = @@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS = @@CHARACTER_SET_RESULTS */;
@@ -95,20 +95,21 @@ DROP TABLE IF EXISTS `account_dept`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account_dept`
 (
-    `id`          bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '部门 id',
-    `parent_id`   bigint unsigned DEFAULT '0' COMMENT '父 id',
-    `dept_name`   varchar(30)     DEFAULT '' COMMENT '部门名称',
-    `order_no`    int             DEFAULT '0' COMMENT '显示顺序',
-    `leader`      varchar(20)     DEFAULT NULL COMMENT '负责人',
-    `phone`       varchar(11)     DEFAULT NULL COMMENT '联系电话',
-    `parent_list` varchar(60)     DEFAULT '' COMMENT '祖级列表',
-    `email`       varchar(50)     DEFAULT NULL COMMENT '邮箱',
-    `create_by`   varchar(64)     DEFAULT '' COMMENT '创建者',
-    `create_time` datetime        DEFAULT NULL COMMENT '创建时间',
-    `update_by`   varchar(64)     DEFAULT '' COMMENT '更新者',
-    `update_time` datetime        DEFAULT NULL COMMENT '更新时间',
-    `remark`      varchar(200)    DEFAULT NULL,
-    `is_deleted`  tinyint(1)      DEFAULT '0' COMMENT '逻辑删除标识',
+    `id`          bigint unsigned  NOT NULL AUTO_INCREMENT COMMENT '部门 id',
+    `parent_id`   bigint unsigned           DEFAULT '0' COMMENT '父 id',
+    `dept_name`   varchar(30)               DEFAULT '' COMMENT '部门名称',
+    `order_no`    int                       DEFAULT '0' COMMENT '显示顺序',
+    `leader`      varchar(20)               DEFAULT NULL COMMENT '负责人',
+    `phone`       varchar(11)               DEFAULT NULL COMMENT '联系电话',
+    `parent_list` varchar(60)               DEFAULT '' COMMENT '祖级列表',
+    `email`       varchar(50)               DEFAULT NULL COMMENT '邮箱',
+    `type`        tinyint unsigned NOT NULL DEFAULT '1' COMMENT '类型，0表示公司，1表示部门，2表示岗位',
+    `create_by`   varchar(64)               DEFAULT '' COMMENT '创建者',
+    `create_time` datetime                  DEFAULT NULL COMMENT '创建时间',
+    `update_by`   varchar(64)               DEFAULT '' COMMENT '更新者',
+    `update_time` datetime                  DEFAULT NULL COMMENT '更新时间',
+    `remark`      varchar(200)              DEFAULT NULL,
+    `is_deleted`  tinyint(1)                DEFAULT '0' COMMENT '逻辑删除标识',
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -123,40 +124,6 @@ LOCK TABLES `account_dept` WRITE;
 /*!40000 ALTER TABLE `account_dept`
     DISABLE KEYS */;
 /*!40000 ALTER TABLE `account_dept`
-    ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `account_dept_user`
---
-
-DROP TABLE IF EXISTS `account_dept_user`;
-/*!40101 SET @saved_cs_client = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `account_dept_user`
-(
-    `id`          bigint unsigned NOT NULL AUTO_INCREMENT,
-    `dept_id`     bigint unsigned NOT NULL COMMENT '部门ID',
-    `user_id`     bigint unsigned NOT NULL COMMENT '用户ID',
-    `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    PRIMARY KEY (`id`),
-    KEY `idx_dept_id` (`dept_id`),
-    KEY `idx_user_id` (`user_id`),
-    CONSTRAINT `fk_account_dept_user_dept` FOREIGN KEY (`dept_id`) REFERENCES `account_dept` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `fk_account_dept_user_user` FOREIGN KEY (`user_id`) REFERENCES `account_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci COMMENT ='部门用户关联表';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `account_dept_user`
---
-
-LOCK TABLES `account_dept_user` WRITE;
-/*!40000 ALTER TABLE `account_dept_user`
-    DISABLE KEYS */;
-/*!40000 ALTER TABLE `account_dept_user`
     ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,6 +268,42 @@ LOCK TABLES `account_platform` WRITE;
 /*!40000 ALTER TABLE `account_platform`
     DISABLE KEYS */;
 /*!40000 ALTER TABLE `account_platform`
+    ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_post`
+--
+
+DROP TABLE IF EXISTS `account_post`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `account_post`
+(
+    `id`          bigint unsigned  NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
+    `post_code`   varchar(64)      NOT NULL COMMENT '岗位编码',
+    `post_name`   varchar(50)      NOT NULL COMMENT '岗位名称',
+    `post_sort`   int              NOT NULL COMMENT '显示顺序',
+    `is_deleted`  tinyint unsigned NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 1代表删除）',
+    `create_by`   bigint                    DEFAULT NULL COMMENT '创建者',
+    `create_time` datetime                  DEFAULT NULL COMMENT '创建时间',
+    `update_by`   bigint                    DEFAULT NULL COMMENT '更新者',
+    `update_time` datetime                  DEFAULT NULL COMMENT '更新时间',
+    `remark`      varchar(500)              DEFAULT NULL COMMENT '备注',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci COMMENT ='岗位信息表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_post`
+--
+
+LOCK TABLES `account_post` WRITE;
+/*!40000 ALTER TABLE `account_post`
+    DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_post`
     ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -495,6 +498,73 @@ LOCK TABLES `account_user_authority` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `account_user_dept`
+--
+
+DROP TABLE IF EXISTS `account_user_dept`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `account_user_dept`
+(
+    `id`          bigint unsigned NOT NULL AUTO_INCREMENT,
+    `dept_id`     bigint unsigned NOT NULL COMMENT '部门ID',
+    `user_id`     bigint unsigned NOT NULL COMMENT '用户ID',
+    `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (`id`),
+    KEY `idx_dept_id` (`dept_id`),
+    KEY `idx_user_id` (`user_id`),
+    CONSTRAINT `fk_account_dept_user_dept` FOREIGN KEY (`dept_id`) REFERENCES `account_dept` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `fk_account_dept_user_user` FOREIGN KEY (`user_id`) REFERENCES `account_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci COMMENT ='部门用户关联表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_user_dept`
+--
+
+LOCK TABLES `account_user_dept` WRITE;
+/*!40000 ALTER TABLE `account_user_dept`
+    DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_user_dept`
+    ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `account_user_post`
+--
+
+DROP TABLE IF EXISTS `account_user_post`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `account_user_post`
+(
+    `id`      bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '用户岗位关联表ID',
+    `user_id` bigint unsigned NOT NULL COMMENT '用户ID',
+    `post_id` bigint unsigned NOT NULL COMMENT '岗位ID',
+    PRIMARY KEY (`id`),
+    KEY `fk_account_user_post_user_id` (`user_id`),
+    KEY `fk_account_user_post_post_id` (`post_id`),
+    CONSTRAINT `fk_account_user_post_post_id` FOREIGN KEY (`post_id`) REFERENCES `account_post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `fk_account_user_post_user_id` FOREIGN KEY (`user_id`) REFERENCES `account_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci COMMENT ='用户岗位关联表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_user_post`
+--
+
+LOCK TABLES `account_user_post` WRITE;
+/*!40000 ALTER TABLE `account_user_post`
+    DISABLE KEYS */;
+/*!40000 ALTER TABLE `account_user_post`
+    ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `account_user_role`
 --
 
@@ -663,4 +733,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-22 17:41:53
+-- Dump completed on 2024-03-24 22:27:25

@@ -22,7 +22,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @NoArgsConstructor
-@Accessors(chain = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BaseEntity implements Serializable {
 

@@ -28,8 +28,4 @@ public class TestController {
     public String test(@Validated AccountRoleDTO accountRoleDTO) {
         return accountRoleDTO.toString();
     }
-
-    public static void main(String[] args) {
-        System.out.println(CommonMpErrorCodeEnum.ORDER_PARAMETER_ERROR.builderCode());
-    }
 }

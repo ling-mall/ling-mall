@@ -50,6 +50,11 @@ public class AccountUserServiceImpl implements IAccountUserService {
     }
 
     @Override
+    public List<AccountUserVO> listAccountUserByIds(List<Long> ids) {
+        return AccountUserConvert.INSTANCE.convertToVOList(accountUserMapper.selectBatchIds(ids));
+    }
+
+    @Override
     public Boolean saveAccountUser(AccountUserDTO accountUser) {
         return accountUserMapper.insert(AccountUserConvert.INSTANCE.dtoToEntity(accountUser)) > 0;
     }

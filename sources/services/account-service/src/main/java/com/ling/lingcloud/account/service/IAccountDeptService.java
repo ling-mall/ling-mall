@@ -1,6 +1,8 @@
 package com.ling.lingcloud.account.service;
 
 import com.ling.lingcloud.account.api.dto.AccountDeptDTO;
+import com.ling.lingcloud.account.api.vo.AccountDeptVO;
+import com.ling.lingcloud.common.mp.domain.PageQuery;
 import com.ling.lingcloud.common.mp.domain.PageResult;
 
 import java.util.List;
@@ -19,16 +21,18 @@ public interface IAccountDeptService {
      * @param accountDeptDTO 部门信息
      * @return 部门列表
      */
-    List<AccountDeptDTO> getDeptList(AccountDeptDTO accountDeptDTO);
+    List<AccountDeptVO> getDeptList(AccountDeptDTO accountDeptDTO);
 
 
     /**
      * 分页获取部门列表.
      *
      * @param accountDeptDTO 部门信息
+     * @param pageQuery
      * @return 部门列表
      */
-    PageResult<AccountDeptDTO> getDeptListByPage(AccountDeptDTO accountDeptDTO);
+    PageResult<AccountDeptVO> getDeptListByPage(AccountDeptDTO accountDeptDTO, PageQuery pageQuery);
+
 
     /**
      * 添加部门.
@@ -60,5 +64,5 @@ public interface IAccountDeptService {
      * @param id 部门id
      * @return 部门信息
      */
-    AccountDeptDTO getDept(Long id);
+    AccountDeptDTO getDeptById(Long id);
 }
