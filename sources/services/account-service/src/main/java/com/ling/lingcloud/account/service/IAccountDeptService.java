@@ -28,7 +28,7 @@ public interface IAccountDeptService {
      * 分页获取部门列表.
      *
      * @param accountDeptDTO 部门信息
-     * @param pageQuery
+     * @param pageQuery      分页信息
      * @return 部门列表
      */
     PageResult<AccountDeptVO> getDeptListByPage(AccountDeptDTO accountDeptDTO, PageQuery pageQuery);
@@ -65,4 +65,6 @@ public interface IAccountDeptService {
      * @return 部门信息
      */
     AccountDeptDTO getDeptById(Long id);
+
+
 }

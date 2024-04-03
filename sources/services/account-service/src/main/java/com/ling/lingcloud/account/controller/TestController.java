@@ -1,8 +1,8 @@
 package com.ling.lingcloud.account.controller;
 
 import cn.dev33.satoken.annotation.SaIgnore;
-import com.ling.lingcloud.account.api.dto.AccountRoleDTO;
-import com.ling.lingcloud.common.mp.exception.CommonMpErrorCodeEnum;
+import com.ling.lingcloud.account.api.entity.AccountUser;
+import com.ling.lingcloud.account.mapper.AccountUserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -24,8 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TestController {
 
+    private final AccountUserMapper accountUserMapper;
+
     @RequestMapping("/test")
-    public String test(@Validated AccountRoleDTO accountRoleDTO) {
-        return accountRoleDTO.toString();
+    public AccountUser test() {
+        return accountUserMapper.selectUserByUserName("admin");
     }
 }

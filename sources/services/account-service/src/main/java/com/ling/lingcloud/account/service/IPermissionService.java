@@ -22,6 +22,14 @@ public interface IPermissionService {
     List<AccountRoleVO> listUserRole(Long userId);
 
     /**
+     * 获取用户实际关联角色.
+     *
+     * @param userId 用户id
+     * @return 用户实际角色
+     */
+    List<AccountRoleVO> listUserActualRole(Long userId);
+
+    /**
      * 设置用户角色.
      *
      * @param userId  用户id
@@ -32,19 +40,19 @@ public interface IPermissionService {
     /**
      * 获取用户组角色.
      *
-     * @param userId 用户id
+     * @param userGroupId 用户组id
      * @return 用户组角色
      */
-    List<AccountRoleVO> listUserGroupRole(Long userId);
+    List<AccountRoleVO> listUserGroupRole(Long userGroupId);
 
 
     /**
      * 设置用户组角色.
      *
-     * @param userId 用户id
-     * @param roleIds 角色id 列表
+     * @param userGroupId 用户id
+     * @param roleIds     角色id 列表
      */
-    Boolean setUserGroupRole(Long userId, List<Long> roleIds);
+    Boolean setUserGroupRole(Long userGroupId, List<Long> roleIds);
 
     /**
      * 获取用户拥有的权限.
@@ -52,7 +60,7 @@ public interface IPermissionService {
      * @param userId 用户id
      * @return 用户权限
      */
-    List<AccountAuthorityVO> listUserAuthority(Long userId);
+    List<AccountAuthorityVO> listUserAllowAuthority(Long userId);
 
     /**
      * 获取用户禁用权限.
@@ -82,9 +90,26 @@ public interface IPermissionService {
     /**
      * 设置用户权限.
      *
-     * @param userId 用户id
+     * @param userId          用户id
+     * @param type            权限类型 0 允许 1 禁止
      * @param authorityIdList 权限id列表
      * @return 是否设置成功
      */
-    Boolean setUserAuthority(Long userId, List<Long> authorityIdList);
+    Boolean setUserAuthority(Long userId, Integer type, List<Long> authorityIdList);
+
+    /**
+     * 获取 部门 角色.
+     *
+     * @param departmentId 部门id
+     * @return 部门角色
+     */
+    List<AccountRoleVO> listDeptRole(Long departmentId);
+
+    /**
+     * 设置 部门 角色.
+     *
+     * @param departmentId 部门id
+     * @param roleIds      角色id 列表
+     */
+    Boolean setDeptRole(Long departmentId, List<Long> roleIds);
 }

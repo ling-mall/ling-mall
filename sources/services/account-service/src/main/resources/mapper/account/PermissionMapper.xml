@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ling.lingcloud.account.mapper.PermissionMapper">
+    <insert id="setUserRoles">
+        insert into account_user_role(user_id, role_id)
+        values
+        <foreach collection="roleIds" item="roleId" separator=",">
+            (#{userId}, #{roleId})
+        </foreach>
+    </insert>
+    <insert id="setUserGroupRoles">
+        insert into account_user_group_role(user_group_id, role_id)
+        values
+        <foreach collection="roleIds" item="roleId" separator=",">
+            (#{userGroupId}, #{roleId})
+        </foreach>
+    </insert>
+    <insert id="setRoleAuthorities">
+        insert into account_role_authority(role_id, authority_id)
+        values
+        <foreach collection="authorityIdList" item="authorityId" separator=",">
+            (#{roleId}, #{authorityId})
+        </foreach>
+    </insert>
+
+    <insert id="setUserAuthorities">
+        insert into account_user_authority(user_id, type, authority_id)
+        values
+        <foreach collection="authorityIdList" item="authorityId" separator=",">
+            (#{userId}, #{type}, #{authorityId})
+        </foreach>
+    </insert>
+
+    <insert id="setDeptRoles">
+        insert into account_dept_role(dept_id, role_id)
+        values
+        <foreach collection="roleIds" item="roleId" separator=",">
+            (#{deptId}, #{roleId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteUserRole">
+        delete from account_user_role
+        where user_id = #{userId}
+        and role_id in
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteUserGroupRole">
+        delete from account_user_group_role
+        where user_group_id = #{userGroupId}
+        and role_id in
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteRoleAuthorities">
+        delete from account_role_authority
+        where role_id = #{roleId}
+        and authority_id in
+        <foreach collection="authorityIdList" item="authorityId" open="(" close=")" separator=",">
+            #{authorityId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteUserAuthorities">
+        delete from account_user_authority
+        where user_id = #{userId}
+        and type = 0
+        and authority_id in
+        <foreach collection="authorityIdList" item="authorityId" open="(" close=")" separator=",">
+            #{authorityId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteUserDisableAuthorities">
+        delete from account_user_authority
+        where user_id = #{userId}
+        and type = 1
+        and authority_id in
+        <foreach collection="authorityIdList" item="authorityId" open="(" close=")" separator=",">
+            #{authorityId}
+        </foreach>
+    </delete>
+    <delete id="deleteDeptRoles">
+        delete from account_dept_role
+        where dept_id = #{deptId}
+        and role_id in
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </delete>
+
+    <select id="listUserRole" resultType="com.ling.lingcloud.account.api.entity.AccountRole">
+        select account_role.id,
+               role_name,
+               role_key,
+               order_no,
+               data_scope,
+               status,
+               create_by,
+               account_role.create_time,
+               update_by,
+               update_time,
+               remark,
+               is_deleted,
+               parent_id,
+               parent_list
+        from account_role
+                 left join account_user_role on account_role.id = account_user_role.role_id
+        where account_user_role.user_id = #{userId}
+    </select>
+    <select id="listUserGroupRole" resultType="com.ling.lingcloud.account.api.entity.AccountRole">
+        select account_role.id,
+               role_name,
+               role_key,
+               order_no,
+               data_scope,
+               status,
+               create_by,
+               account_role.create_time,
+               update_by,
+               update_time,
+               remark,
+               is_deleted,
+               parent_id,
+               parent_list
+        from account_role
+                 left join account_group_role on account_role.id = account_group_role.role_id
+        where account_group_role.group_id = #{userGroupId}
+    </select>
+    <select id="listRoleAuthority" resultType="com.ling.lingcloud.account.api.entity.AccountAuthority">
+        select account_authority.id,
+               authority_key,
+               order_no,
+               authority_type,
+               create_by,
+               account_authority.create_time,
+               update_by,
+               update_time,
+               remark,
+               is_deleted
+        from account_authority
+                 left join account_role_authority on account_authority.id = account_role_authority.authority_id
+    </select>
+    <select id="listUserAllowAuthority" resultType="com.ling.lingcloud.account.api.entity.AccountAuthority">
+        select account_authority.id,
+               authority_key,
+               order_no,
+               authority_type,
+               create_by,
+               account_authority.create_time,
+               update_by,
+               update_time,
+               remark,
+               is_deleted
+        from account_authority
+                 left join account_user_authority on account_authority.id = account_user_authority.authority_id
+        where account_user_authority.user_id = #{userId}
+          and account_user_authority.type = 0
+    </select>
+    <select id="listUserDisableAuthority" resultType="com.ling.lingcloud.account.api.entity.AccountAuthority">
+        select account_authority.id,
+               authority_key,
+               order_no,
+               authority_type,
+               create_by,
+               account_authority.create_time,
+               update_by,
+               update_time,
+               remark,
+               is_deleted
+        from account_authority
+                 left join account_user_authority on account_authority.id = account_user_authority.authority_id
+        where account_user_authority.user_id = #{userId}
+          and account_user_authority.type = 1
+    </select>
+    <select id="listDeptRole" resultType="com.ling.lingcloud.account.api.entity.AccountRole">
+        select account_role.id,
+               role_name,
+               role_key,
+               order_no,
+               data_scope,
+               status,
+               create_by,
+               account_role.create_time,
+               update_by,
+               update_time,
+               remark,
+               is_deleted,
+               parent_id,
+               parent_list
+        from account_role
+                 left join account_dept_role on account_role.id = account_dept_role.role_id
+        where account_dept_role.dept_id = #{departmentId}
+    </select>
+
+</mapper>

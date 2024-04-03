@@ -34,4 +34,9 @@ public class AccountAuthorityVO extends BaseVO {
      */
     private Integer orderNo;
 
+    /**
+     * 类型 0授权 1禁用
+     */
+    private Integer type;
+
 }

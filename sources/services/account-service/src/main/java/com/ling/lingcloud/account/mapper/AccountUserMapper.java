@@ -3,6 +3,7 @@ package com.ling.lingcloud.account.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ling.lingcloud.account.api.entity.AccountUser;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author 钟舒艺
  */
+@Mapper
 @Repository
 public interface AccountUserMapper extends BaseMapper<AccountUser> {
 
@@ -26,7 +28,4 @@ public interface AccountUserMapper extends BaseMapper<AccountUser> {
                         .eq(AccountUser::getUsername, username)
                         .last("limit 1"));
     }
-
-
-
 }
