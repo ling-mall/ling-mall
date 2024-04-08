@@ -41,12 +41,12 @@
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-mp</artifactId>
+            <artifactId>common-spring-boot-starter-mp</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-redis</artifactId>
+            <artifactId>common-spring-boot-starter-redis</artifactId>
         </dependency>
 
         <!--Mysql数据库驱动-->
@@ -68,12 +68,12 @@
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-dubbo</artifactId>
+            <artifactId>common-spring-boot-starter-dubbo</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-i18n</artifactId>
+            <artifactId>common-spring-boot-starter-i18n</artifactId>
         </dependency>
     </dependencies>
 

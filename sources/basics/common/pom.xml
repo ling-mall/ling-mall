@@ -15,20 +15,20 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>../common-mp</module>
-        <module>../common-dubbo</module>
-        <module>../common-redis</module>
+        <module>../common-spring-boot-starter-mp</module>
+        <module>../common-spring-boot-starter-dubbo</module>
+        <module>../common-spring-boot-starter-redis</module>
         <module>../common-security</module>
-        <module>../common-satoken</module>
+        <module>../common-spring-boot-starter-satoken</module>
         <module>../common-doc</module>
         <module>../common-test</module>
         <module>../common-captcha</module>
-        <module>../common-web</module>
+        <module>../common-spring-boot-starter-web</module>
         <module>../common-service</module>
         <module>../api</module>
-        <module>../common-base</module>
-        <module>../common-i18n</module>
-        <module>../common-datascope</module>
+        <module>../common-spring-boot-starter-base</module>
+        <module>../common-spring-boot-starter-i18n</module>
+        <module>../common-spring-boot-starter-datascope</module>
     </modules>
 
     <properties>

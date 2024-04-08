@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ling.lingcloud</groupId>
+        <artifactId>common</artifactId>
+        <version>0.1.0</version>
+        <relativePath>../common/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>common-spring-boot-starter-dubbo</artifactId>
+
+    <description>
+        整合 dubbo 组件，并使用 Nacos 作为注册中心，消费者与生产者都需要引入这个依赖
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-registry-nacos -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+        </dependency>
+    </dependencies>
+</project>

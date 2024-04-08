@@ -1,6 +1,6 @@
 package com.ling.lingcloud.gateway.api;
 
-import com.ling.lingcloud.common.mp.domain.PageInfo;
+import com.ling.lingcloud.common.mp.domain.PageResult;
 import com.ling.lingcloud.common.mp.domain.PageQuery;
 import com.ling.lingcloud.gateway.api.domain.GatewayRoute;
 import com.ling.lingcloud.gateway.api.dto.GatewayRouteDTO;
@@ -20,7 +20,7 @@ public interface RemoteGatewayService {
      * @param pageQuery 分页信息
      * @return 查询结果
      */
-    PageInfo<GatewayRoute> listPageGatewayRoute(GatewayRouteDTO dto, PageQuery pageQuery);
+    PageResult<GatewayRoute> listPageGatewayRoute(GatewayRouteDTO dto, PageQuery pageQuery);
 
     /**
      * 新增网关路由，新增后刷新配置

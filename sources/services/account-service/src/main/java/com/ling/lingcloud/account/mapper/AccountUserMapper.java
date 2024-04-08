@@ -2,7 +2,9 @@ package com.ling.lingcloud.account.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.ling.lingcloud.account.api.domain.AccountUser;
+import com.ling.lingcloud.account.api.entity.AccountUser;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * 账户持久层.
@@ -10,6 +12,8 @@ import com.ling.lingcloud.account.api.domain.AccountUser;
  *
  * @author 钟舒艺
  */
+@Mapper
+@Repository
 public interface AccountUserMapper extends BaseMapper<AccountUser> {
 
     /**
@@ -24,5 +28,4 @@ public interface AccountUserMapper extends BaseMapper<AccountUser> {
                         .eq(AccountUser::getUsername, username)
                         .last("limit 1"));
     }
-
 }

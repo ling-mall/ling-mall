@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-mp</artifactId>
+            <artifactId>common-spring-boot-starter-mp</artifactId>
         </dependency>
 
 

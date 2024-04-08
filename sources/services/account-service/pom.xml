@@ -25,22 +25,22 @@
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-satoken</artifactId>
+            <artifactId>common-spring-boot-starter-satoken</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-mp</artifactId>
+            <artifactId>common-spring-boot-starter-mp</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-dubbo</artifactId>
+            <artifactId>common-spring-boot-starter-dubbo</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-web</artifactId>
+            <artifactId>common-spring-boot-starter-web</artifactId>
         </dependency>
 
         <!-- Sa-Token 插件：整合SSO -->
@@ -55,6 +55,30 @@
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
         </dependency>
-    </dependencies>
 
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter-test</artifactId>
+            <version>3.5.4.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

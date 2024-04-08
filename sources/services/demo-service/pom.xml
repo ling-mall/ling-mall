@@ -16,7 +16,7 @@
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-web</artifactId>
+            <artifactId>common-spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -27,12 +27,12 @@
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-satoken</artifactId>
+            <artifactId>common-spring-boot-starter-satoken</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-i18n</artifactId>
+            <artifactId>common-spring-boot-starter-i18n</artifactId>
         </dependency>
 
         <dependency>
@@ -42,7 +42,7 @@
 
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
-            <artifactId>common-base</artifactId>
+            <artifactId>common-spring-boot-starter-base</artifactId>
         </dependency>
 
     </dependencies>

@@ -1,8 +1,7 @@
 package com.ling.lingcloud.account.api;
 
 /**
- * 简短描述啦.
- * 详细说说
+ * 用户服务接口.
  * Class created on 2023/8/12 by 钟舒艺
  *
  * @author 钟舒艺
