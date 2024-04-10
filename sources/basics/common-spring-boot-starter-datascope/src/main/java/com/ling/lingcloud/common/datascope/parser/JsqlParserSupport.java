@@ -29,7 +29,6 @@ import net.sf.jsqlparser.statement.update.Update;
  * <a href="https://github.com/JSQLParser/JSqlParser">JSqlParser</a>
  *
  * @author miemie hccake
- * @since 2020-06-22
  */
 @Slf4j
 public abstract class JsqlParserSupport {

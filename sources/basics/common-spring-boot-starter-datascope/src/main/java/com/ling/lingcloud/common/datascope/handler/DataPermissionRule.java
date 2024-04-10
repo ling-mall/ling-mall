@@ -22,7 +22,6 @@ import com.ling.lingcloud.common.datascope.annotation.DataPermission;
  * 数据权限的规则抽象类
  *
  * @author hccake
- * @since 0.7.0
  */
 public class DataPermissionRule {
 

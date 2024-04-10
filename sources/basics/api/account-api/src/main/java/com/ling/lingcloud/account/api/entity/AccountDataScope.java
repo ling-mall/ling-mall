@@ -1,57 +1,54 @@
 package com.ling.lingcloud.account.api.entity;
 
-import java.io.Serial;
-
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.ling.lingcloud.common.domain.base.BaseEntity;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serial;
+
 /**
- * <p>
- * 第三方用户信息.
- * </p>
+ * 数据权限表.
  *
  * @author 钟舒艺
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("account_platform")
-public class AccountPlatform extends BaseEntity {
+@TableName("account_data_scope")
+public class AccountDataScope extends BaseEntity {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     /**
-     * 账号id.
+     * 权限id.
      */
-    private Integer userId;
+    private Long authorityId;
 
     /**
-     * 平台id.
+     * 规则名称.
      */
-    private String platformId;
+    private String ruleName;
 
     /**
-     * 平台access_token.
+     * 规则字段.
      */
-    private String platformToken;
+    private String ruleField;
 
     /**
-     * 平台类型 0:未知,1:facebook,2:google,3:wechat,4:qq,5:weibo,6:twitter.
+     * 条件规则.
      */
-    private Boolean type;
+    private String conditionRule;
 
     /**
-     * 昵称.
+     * 规则值.
      */
-    private String nickname;
+    private String ruleValue;
 
     /**
-     * 头像.
+     * 状态（1正常 0停用）.
      */
-    private String avatar;
+    private Byte status;
 }

@@ -11,7 +11,6 @@ import org.mapstruct.factory.Mappers;
  * 系统用户转换类.
  *
  * @author 钟舒艺
- * @since 2022-10-22 11:09
  **/
 @Mapper
 public interface AccountDeptConvert extends BaseConvert<AccountDeptVO, AccountDeptDTO, AccountDept> {

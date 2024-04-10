@@ -61,7 +61,7 @@ public class AccountUserServiceImpl implements IAccountUserService {
 
     @Override
     public Boolean saveAccountUserList(List<AccountUserDTO> accountUserList) {
-        return Db.saveBatch(AccountUserConvert.INSTANCE.dtoListToEntityList(accountUserList));
+        return accountUserMapper.insertAccountUserList(AccountUserConvert.INSTANCE.dtoListToEntityList(accountUserList));
     }
 
     @Override

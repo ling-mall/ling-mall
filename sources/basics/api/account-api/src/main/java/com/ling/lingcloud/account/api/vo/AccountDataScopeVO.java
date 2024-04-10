@@ -11,56 +11,47 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 部门表 视图类.
+ * 数据权限表 视图类.
  * </p>
  *
  * @author 钟舒艺
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class AccountDeptVO extends BaseVO implements Serializable {
+@Accessors(chain = true)
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
+public class AccountDataScopeVO extends BaseVO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     /**
-     * 父 id.
+     * 权限id.
      */
-    private Long parentId;
+    private Long authorityId;
 
     /**
-     * 部门名称.
+     * 规则名称.
      */
-    private String deptName;
+    private String ruleName;
 
     /**
-     * 显示顺序.
+     * 规则字段.
      */
-    private Integer orderNo;
+    private String ruleField;
 
     /**
-     * 负责人.
+     * 条件规则.
      */
-    private String leader;
+    private String conditionRule;
 
     /**
-     * 联系电话.
+     * 规则值.
      */
-    private String phone;
+    private String ruleValue;
 
     /**
-     * .
+     * 状态（1正常 0停用）.
      */
-    private String parentList;
-
-    /**
-     * 邮箱.
-     */
-    private String email;
-
-    /**
-     * 部门类型 0:公司 1:部门 2:岗位
-     */
-    private Integer type;
-
+    private Byte status;
 }

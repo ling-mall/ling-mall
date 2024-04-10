@@ -36,7 +36,6 @@ import java.util.Map;
  * 插件工具类
  *
  * @author TaoYu , hubin
- * @since 2017-06-20
  */
 @UtilityClass
 public class PluginUtils {

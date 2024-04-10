@@ -11,7 +11,6 @@ import lombok.Data;
  * 用户类.
  *
  * @author 钟舒艺
- * @since 2023-8-27 14:38
  **/
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)

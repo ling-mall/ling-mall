@@ -2,9 +2,13 @@ package com.ling.lingcloud.account.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.toolkit.Db;
+import com.ling.lingcloud.account.api.convert.AccountUserConvert;
 import com.ling.lingcloud.account.api.entity.AccountUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 账户持久层.
@@ -27,5 +31,15 @@ public interface AccountUserMapper extends BaseMapper<AccountUser> {
                 Wrappers.<AccountUser>lambdaQuery()
                         .eq(AccountUser::getUsername, username)
                         .last("limit 1"));
+    }
+
+    /**
+     * 批量插入用户信息.
+     *
+     * @param accountUserList 用户信息
+     * @return 是否成功
+     */
+    default Boolean  insertAccountUserList(List<AccountUser> accountUserList){
+        return Db.saveBatch(accountUserList);
     }
 }

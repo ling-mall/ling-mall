@@ -38,9 +38,9 @@ public class AccountRoleVO implements Serializable {
     private Integer orderNo;
 
     /**
-     * 数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限 5:仅本人权限）
+     * 数据权限优先级，数值越小表示优先级越高
      */
-    private Integer dataScope;
+    private Integer dataScopePriority;
 
     /**
      * 角色状态（1 启用 0 禁用）

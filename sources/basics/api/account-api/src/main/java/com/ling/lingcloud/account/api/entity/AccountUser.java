@@ -14,7 +14,6 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author 钟舒艺
- * @since 2023-07-07
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
