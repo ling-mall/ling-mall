@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: foundation
+  profiles:
+    active: @profiles.active@
+  web:
+    resources:
+      add-mappings: false
+
+server:
+  port: 20004
+--- # nacos 配置
+spring:
+  cloud:
+    nacos:
+      server-addr: @nacos.server@
+      username: @nacos.username@
+      password: @nacos.password@
+      # 服务发现
+      discovery:
+        group: @nacos.discovery.group@
+        namespace: @nacos.discovery.namespace@
+        service: ${spring.application.name}
+      # 配置
+      config:
+        # 配置文件格式
+        file-extension: yaml
+        # 命名空间
+        namespace: @nacos.config.namespace@
+        # 组名称
+        group: @nacos.config.group@
+
+  config:
+    import:
+      - optional:nacos:lingcloud-${spring.application.name}-service.${spring.cloud.nacos.config.file-extension}
+      - optional:nacos:lingcloud-common-other.${spring.cloud.nacos.config.file-extension}
+      - optional:nacos:lingcloud-common-resources.${spring.cloud.nacos.config.file-extension}
+---
+spring:
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/**/*
+    encoding: UTF-8
+

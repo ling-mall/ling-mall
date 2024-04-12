@@ -20,6 +20,7 @@
         <module>../../services/cloud-service/nacos</module>
         <module>../../services/cloud-service/gateway</module>
         <module>../../services/admin-service</module>
+        <module>../../services/foundation-service</module>
     </modules>
 
     <dependencies>
