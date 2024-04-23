@@ -88,5 +88,4 @@ public interface GenerateEntityMapper extends BaseMapper<FoundationGenerateEntit
      * @return 删除值数
      */
     int deleteValueByColumnId(Long columnId);
-
 }

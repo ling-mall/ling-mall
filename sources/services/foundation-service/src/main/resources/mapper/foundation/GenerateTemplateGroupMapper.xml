@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ling.lingcloud.foundation.generate.mapper.GenerateTemplateGroupMapper">
+
+    <select id="selectTemplateGroupListByUserId"
+            resultType="com.ling.lingcloud.foundation.api.generate.entity.FoundationGenerateTemplateGroup">
+        select id,
+               group_name,
+               parent_id,
+               parent_list,
+               order_no,
+               type,
+               remark,
+               create_by,
+               create_time,
+               update_by,
+               update_time,
+               is_deleted,
+               user_id
+        from foundation_generate_template_group
+        where user_id = #{userId}
+    </select>
+    <select id="checkGroupName" resultType="java.lang.Integer">
+        select count(1)
+        from foundation_generate_template_group
+        where user_id = #{userId}
+          and group_name = #{groupName}
+          and parent_id = #{parentId}
+    </select>
+</mapper>

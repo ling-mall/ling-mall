@@ -1,26 +1,23 @@
-package com.ling.lingcloud.common.exception;
+package com.ling.lingcloud.foundation.api.generate.enums;
 
 import com.ling.lingcloud.common.exception.ErrorManager;
-import com.ling.lingcloud.common.exception.IErrorCode;
+import com.ling.lingcloud.foundation.api.generate.exception.IFoundationGenerateErrorCode;
 import lombok.Getter;
 
 /**
- * 通用状态码.
- * Class created on 2024/3/13 by 钟舒艺
+ * 基础服务生成错误码枚举.
+ * Class created on 2024/4/15 by 钟舒艺
  *
  * @author 钟舒艺
  */
 @Getter
-public enum CommonCodeEnum implements IErrorCode {
+public enum FoundationGenerateErrorCodeEnum implements IFoundationGenerateErrorCode {
 
     /**
-     * 操作成功
+     * 模板组名称重复.
      */
-    SUCCESS(0, 0, "common.web.request.success", new String[]{}),
-    /**
-     * 操作失败
-     */
-    FAIL(1, 1, "common.web.request.fail", new String[]{});
+    GROUP_NAME_REPEAT(1, 1, "foundation.generate.group.exception.name.repeat", new String[]{"groupName"}),
+    ;
 
     /**
      * 责任方
@@ -43,39 +40,13 @@ public enum CommonCodeEnum implements IErrorCode {
      */
     private final String messageCode;
 
-
     /**
      * i18n 参数名称列表
      */
     private final String[] parameters;
 
 
-    @Override
-    public Integer getResponsibleParty() {
-        return 0;
-    }
-
-    @Override
-    public Integer getServerId() {
-        return 0;
-    }
-
-    @Override
-    public Integer getModuleId() {
-        return 0;
-    }
-
-    @Override
-    public String getModuleName() {
-        return "common";
-    }
-
-    @Override
-    public String getServerName() {
-        return "common";
-    }
-
-    CommonCodeEnum(Integer responsibleParty, Integer serialId, String messageCode, String[] parameters) {
+    FoundationGenerateErrorCodeEnum(Integer responsibleParty, Integer serialId, String messageCode, String[] parameters) {
         this.responsibleParty = responsibleParty;
         this.serialId = serialId;
         this.messageCode = messageCode;

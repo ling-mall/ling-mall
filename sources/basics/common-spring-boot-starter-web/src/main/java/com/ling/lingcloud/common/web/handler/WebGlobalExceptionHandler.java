@@ -1,5 +1,6 @@
 package com.ling.lingcloud.common.web.handler;
 
+import com.ling.lingcloud.common.exception.BusinessException;
 import com.ling.lingcloud.common.web.domain.R;
 import com.ling.lingcloud.common.web.exception.CommonWebErrorCodeEnum;
 import com.ling.lingcloud.common.web.exception.WebBusinessException;
@@ -30,6 +31,16 @@ public class WebGlobalExceptionHandler {
      */
     @ExceptionHandler(WebBusinessException.class)
     public R<Void> handleMethodArgumentNotValidException(WebBusinessException e) {
+        log.error("捕获到 {} 服务 {} 模块异常: {}", e.getErrorCode().getServerName(), e.getErrorCode().getModuleName(), e.getMessage());
+        return R.error(e.getErrorCode());
+    }
+
+
+    /**
+     * 业务异常.
+     */
+    @ExceptionHandler(BusinessException.class)
+    public R<Void> handleMethodArgumentNotValidException(BusinessException e) {
         log.error("捕获到 {} 服务 {} 模块异常: {}", e.getErrorCode().getServerName(), e.getErrorCode().getModuleName(), e.getMessage());
         return R.error(e.getErrorCode());
     }
