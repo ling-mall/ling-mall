@@ -50,7 +50,7 @@ public class FoundationGenerateTemplate extends BaseEntity {
     /**
      * 排序.
      */
-    private Integer sort;
+    private Integer orderNo;
 
     /**
      * 状态（0正常 1停用）.

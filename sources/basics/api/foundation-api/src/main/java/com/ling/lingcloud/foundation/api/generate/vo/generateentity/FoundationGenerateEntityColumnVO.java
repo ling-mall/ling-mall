@@ -1,6 +1,9 @@
-package com.ling.lingcloud.foundation.api.generate.dto.generateentity;
+package com.ling.lingcloud.foundation.api.generate.vo.generateentity;
 
 import lombok.Data;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 /**
  * 实体列 DTO.
@@ -9,7 +12,10 @@ import lombok.Data;
  * @author 钟舒艺
  */
 @Data
-public class FoundationGenerateEntityColumnDTO {
+public class FoundationGenerateEntityColumnVO implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     /**
      * 列id
@@ -21,10 +27,16 @@ public class FoundationGenerateEntityColumnDTO {
      */
     private String columnName;
 
+
     /**
      * 排序
      */
     private Integer orderNo;
+
+    /**
+     * 值
+     */
+    private String value;
 
     /**
      * 是否必填

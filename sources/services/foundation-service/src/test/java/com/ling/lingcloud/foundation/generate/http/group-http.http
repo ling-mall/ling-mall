@@ -10,3 +10,6 @@ Content-Type: application/json
   "userId": 1,
   "createBy": 1
 }
+###
+
+GET http://localhost:20004/foundation/generate/template/group/tree/1

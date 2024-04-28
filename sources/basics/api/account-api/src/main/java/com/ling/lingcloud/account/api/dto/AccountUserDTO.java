@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
+import java.time.LocalDateTime;
 
 /**
  * 简短描述啦.
@@ -57,7 +58,7 @@ public class AccountUserDTO extends BaseDTO {
     /**
      * 最后一次登录时间.
      */
-    private Integer lastLoginAt;
+    private LocalDateTime lastLoginAt;
 
     /**
      * 最后一次登录ip.

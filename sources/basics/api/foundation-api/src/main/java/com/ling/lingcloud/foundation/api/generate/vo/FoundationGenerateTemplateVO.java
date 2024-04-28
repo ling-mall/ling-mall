@@ -54,7 +54,7 @@ public class FoundationGenerateTemplateVO extends BaseVO implements Serializable
     /**
      * 排序.
      */
-    private Integer sort;
+    private Integer orderNo;
 
     /**
      * 状态（0正常 1停用）.

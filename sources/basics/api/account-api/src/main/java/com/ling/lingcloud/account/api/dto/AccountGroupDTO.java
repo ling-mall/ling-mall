@@ -1,10 +1,8 @@
 package com.ling.lingcloud.account.api.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ling.lingcloud.common.domain.base.BaseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serial;
 import java.io.Serializable;

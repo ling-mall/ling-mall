@@ -4,6 +4,8 @@ import com.ling.lingcloud.common.domain.base.BaseVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.time.LocalDateTime;
+
 /**
  * 用户视图.
  * Class created on 2024/3/18 by 钟舒艺
@@ -42,7 +44,7 @@ public class AccountUserVO extends BaseVO {
     /**
      * 最后一次登录时间.
      */
-    private Integer lastLoginAt;
+    private LocalDateTime lastLoginAt;
 
     /**
      * 最后一次登录ip.

@@ -1,8 +1,8 @@
 package com.ling.lingcloud.account.api.convert;
 
 import com.ling.lingcloud.account.api.dto.AccountGroupDTO;
-import com.ling.lingcloud.account.api.vo.AccountGroupVO;
 import com.ling.lingcloud.account.api.entity.AccountGroup;
+import com.ling.lingcloud.account.api.vo.AccountGroupVO;
 import com.ling.lingcloud.common.interfaces.BaseConvert;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

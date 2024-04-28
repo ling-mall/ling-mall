@@ -3,7 +3,6 @@ package com.ling.lingcloud.account.api.vo;
 import com.ling.lingcloud.common.domain.base.BaseVO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.io.Serial;
 import java.io.Serializable;

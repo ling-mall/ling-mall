@@ -1,12 +1,12 @@
 package com.ling.lingcloud.account.api.entity;
 
-import java.io.Serial;
-
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.ling.lingcloud.common.domain.base.BaseEntity;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serial;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -56,7 +56,7 @@ public class AccountUser extends BaseEntity {
     /**
      * 最后一次登录时间.
      */
-    private Integer lastLoginAt;
+    private LocalDateTime lastLoginAt;
 
     /**
      * 最后一次登录ip.

@@ -2,6 +2,7 @@ package com.ling.lingcloud.foundation.api.generate.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ling.lingcloud.common.domain.base.BaseDTO;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -39,6 +40,7 @@ public class FoundationGenerateTemplateDTO extends BaseDTO implements Serializab
     /**
      * 模板分组.
      */
+    @NotNull
     private Long templateGroupId;
 
     /**
@@ -54,7 +56,7 @@ public class FoundationGenerateTemplateDTO extends BaseDTO implements Serializab
     /**
      * 排序.
      */
-    private Integer sort;
+    private Integer orderNo;
 
     /**
      * 状态（0正常 1停用）.

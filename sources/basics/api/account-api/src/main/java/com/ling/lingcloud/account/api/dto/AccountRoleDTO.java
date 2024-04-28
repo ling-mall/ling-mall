@@ -1,15 +1,11 @@
 package com.ling.lingcloud.account.api.dto;
 
 import com.ling.lingcloud.common.domain.base.BaseDTO;
-import com.ling.lingcloud.common.validation.ValidationGroups;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
-import java.io.Serializable;
 
 /**
  * 角色数据传输对象.

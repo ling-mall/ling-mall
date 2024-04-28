@@ -27,8 +27,28 @@
     <delete id="deleteValueByRowId">
         DELETE FROM foundation_generate_entity_value WHERE entity_row_id = #{rowId}
     </delete>
+
     <delete id="deleteValueByColumnId">
         DELETE FROM foundation_generate_entity_value WHERE entity_column_id = #{columnId}
     </delete>
+
+    <select id="listRowByEntityId"
+            resultType="com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityRowVO">
+        SELECT id, entity_id, `index` FROM foundation_generate_entity_row WHERE entity_id = #{entityId}
+    </select>
+
+    <select id="listColumnByEntityId"
+            resultType="com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityColumnVO">
+        SELECT id, entity_id, column_name, `order`, is_required
+        FROM foundation_generate_entity_column
+        WHERE entity_id = #{entityId}
+    </select>
+
+    <select id="listValueByEntityId"
+            resultType="com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityValueVO">
+        SELECT id, entity_id, entity_column_id, entity_row_id, value
+        FROM foundation_generate_entity_value
+        WHERE entity_id = #{entityId}
+    </select>
 
 </mapper>

@@ -1,7 +1,5 @@
 package com.ling.lingcloud.account.api.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.ling.lingcloud.common.domain.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

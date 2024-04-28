@@ -77,7 +77,7 @@ public class R<T> extends Result<T> {
      * @param message 提示信息
      * @return 通用返回
      */
-    public R<Void> success(String message) {
+    public static R<Void> success(String message) {
         return new R<>(CommonCodeEnum.SUCCESS.builderCode(), message, null, System.currentTimeMillis(), true);
     }
 

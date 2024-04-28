@@ -32,7 +32,7 @@ public class WebGlobalExceptionHandler {
     @ExceptionHandler(WebBusinessException.class)
     public R<Void> handleMethodArgumentNotValidException(WebBusinessException e) {
         log.error("捕获到 {} 服务 {} 模块异常: {}", e.getErrorCode().getServerName(), e.getErrorCode().getModuleName(), e.getMessage());
-        return R.error(e.getErrorCode());
+        return R.error(e.getErrorCode(), (Object[]) e.getArgs());
     }
 
 
@@ -42,7 +42,7 @@ public class WebGlobalExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     public R<Void> handleMethodArgumentNotValidException(BusinessException e) {
         log.error("捕获到 {} 服务 {} 模块异常: {}", e.getErrorCode().getServerName(), e.getErrorCode().getModuleName(), e.getMessage());
-        return R.error(e.getErrorCode());
+        return R.error(e.getErrorCode(), (Object[]) e.getArgs());
     }
 
     /**

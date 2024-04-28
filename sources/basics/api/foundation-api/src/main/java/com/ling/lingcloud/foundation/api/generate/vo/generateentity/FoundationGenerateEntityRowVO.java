@@ -1,8 +1,9 @@
-package com.ling.lingcloud.foundation.api.generate.dto.generateentity;
+package com.ling.lingcloud.foundation.api.generate.vo.generateentity;
 
-import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityColumnVO;
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,10 @@ import java.util.List;
  * @author 钟舒艺
  */
 @Data
-public class FoundationGenerateEntityRowDTO {
+public class FoundationGenerateEntityRowVO implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     /**
      * 行id

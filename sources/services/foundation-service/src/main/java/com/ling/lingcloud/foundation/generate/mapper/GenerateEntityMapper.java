@@ -1,11 +1,15 @@
 package com.ling.lingcloud.foundation.generate.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ling.lingcloud.foundation.api.generate.dto.generateentity.FoundationGenerateEntityDTO;
 import com.ling.lingcloud.foundation.api.generate.dto.generateentity.FoundationGenerateEntityRowDTO;
 import com.ling.lingcloud.foundation.api.generate.entity.FoundationGenerateEntity;
+import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityColumnVO;
+import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityRowVO;
+import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityValueVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 实体 mapper.
@@ -16,6 +20,32 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface GenerateEntityMapper extends BaseMapper<FoundationGenerateEntity> {
+
+    /**
+     * 获取行
+     *
+     * @param entityId 实体id
+     * @return 行
+     */
+    List<FoundationGenerateEntityRowVO> listRowByEntityId(Long entityId);
+
+
+    /**
+     * 获取列
+     *
+     * @param entityId 实体id
+     * @return 列
+     */
+    List<FoundationGenerateEntityColumnVO> listColumnByEntityId(Long entityId);
+
+
+    /**
+     * 获取值
+     *
+     * @param entityId 实体id
+     * @return 值
+     */
+    List<FoundationGenerateEntityValueVO> listValueByEntityId(Long entityId);
 
     /**
      * 插入行

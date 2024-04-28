@@ -1,10 +1,12 @@
-package com.ling.lingcloud.foundation.api.generate.dto.generateentity;
+package com.ling.lingcloud.foundation.api.generate.vo.generateentity;
 
 import com.ling.lingcloud.common.domain.base.BaseDTO;
+import com.ling.lingcloud.foundation.api.generate.dto.generateentity.FoundationGenerateEntityRowDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,8 +16,7 @@ import java.util.List;
  * @author 钟舒艺
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class FoundationGenerateEntityDTO extends BaseDTO {
+public class FoundationGenerateEntityVO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -33,5 +34,5 @@ public class FoundationGenerateEntityDTO extends BaseDTO {
     /**
      * 行
      */
-    private List<FoundationGenerateEntityRowDTO> rows;
+    private List<FoundationGenerateEntityRowVO> rows;
 }

@@ -45,6 +45,12 @@
             <groupId>com.ling.lingcloud</groupId>
             <artifactId>common-spring-boot-starter-mp</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.ling.lingcloud</groupId>
+            <artifactId>common-test</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.ling.lingcloud</groupId>
             <artifactId>foundation-api</artifactId>
