@@ -22,30 +22,30 @@ package com.ling.lingcloud.common.datascope.test.datarule.user;
  */
 public final class LoginUserHolder {
 
-	private LoginUserHolder() {
-	}
+    private static final ThreadLocal<LoginUser> LOGIN_USER = new ThreadLocal<>();
 
-	private static final ThreadLocal<LoginUser> LOGIN_USER = new ThreadLocal<>();
+    private LoginUserHolder() {
+    }
 
-	/**
-	 * 获取当前登录用户
-	 */
-	public static LoginUser get() {
-		return LOGIN_USER.get();
-	}
+    /**
+     * 获取当前登录用户
+     */
+    public static LoginUser get() {
+        return LOGIN_USER.get();
+    }
 
-	/**
-	 * 设置当前登录用户
-	 */
-	public static void set(LoginUser loginUser) {
-		LOGIN_USER.set(loginUser);
-	}
+    /**
+     * 设置当前登录用户
+     */
+    public static void set(LoginUser loginUser) {
+        LOGIN_USER.set(loginUser);
+    }
 
-	/**
-	 * 清除当前登录用户
-	 */
-	public static void remove() {
-		LOGIN_USER.remove();
-	}
+    /**
+     * 清除当前登录用户
+     */
+    public static void remove() {
+        LOGIN_USER.remove();
+    }
 
 }

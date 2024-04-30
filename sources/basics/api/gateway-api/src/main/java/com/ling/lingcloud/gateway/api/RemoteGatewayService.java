@@ -1,7 +1,7 @@
 package com.ling.lingcloud.gateway.api;
 
-import com.ling.lingcloud.common.mp.domain.PageResult;
 import com.ling.lingcloud.common.mp.domain.PageQuery;
+import com.ling.lingcloud.common.mp.domain.PageResult;
 import com.ling.lingcloud.gateway.api.domain.GatewayRoute;
 import com.ling.lingcloud.gateway.api.dto.GatewayRouteDTO;
 

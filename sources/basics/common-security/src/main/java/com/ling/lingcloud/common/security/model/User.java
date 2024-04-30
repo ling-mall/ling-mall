@@ -1,11 +1,10 @@
 package com.ling.lingcloud.common.security.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+
 import java.io.Serial;
 import java.io.Serializable;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-import lombok.Data;
 
 /**
  * 用户类.

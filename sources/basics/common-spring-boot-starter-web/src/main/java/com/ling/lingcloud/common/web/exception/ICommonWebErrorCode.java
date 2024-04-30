@@ -1,7 +1,6 @@
 package com.ling.lingcloud.common.web.exception;
 
 import com.ling.lingcloud.common.exception.IErrorCode;
-import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * Web 错误码.

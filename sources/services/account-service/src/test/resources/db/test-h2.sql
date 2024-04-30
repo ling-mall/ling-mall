@@ -18,5 +18,8 @@ CREATE TABLE account_user
     is_deleted       tinyint      NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 1代表删除）'
 );
 
-INSERT INTO account_user (id, username, email, tel, password, status, create_ip_at, last_login_at, last_login_ip_at, login_count, remark, create_by, create_time, update_by, update_time, is_deleted) VALUES (1, 'admin', 'admin@qq.com', '17607952136', '$2a$10$KMjutg4g1Rx2CW1WNC0W/.zdGkXDhSGy939Ne3gzO4mToziqxDVA6', 1, '', 0, '', 0, '', 0, '2023-08-19 18:51:18', 0, '2023-08-19 18:55:44', 0);
+INSERT INTO account_user (id, username, email, tel, password, status, create_ip_at, last_login_at, last_login_ip_at,
+                          login_count, remark, create_by, create_time, update_by, update_time, is_deleted)
+VALUES (1, 'admin', 'admin@qq.com', '17607952136', '$2a$10$KMjutg4g1Rx2CW1WNC0W/.zdGkXDhSGy939Ne3gzO4mToziqxDVA6', 1,
+        '', 0, '', 0, '', 0, '2023-08-19 18:51:18', 0, '2023-08-19 18:55:44', 0);
 

@@ -12,22 +12,22 @@ import lombok.Data;
 @Data
 public class I18nMessage {
 
-	/**
-	 * 国际化标识
-	 */
-	@NotEmpty(message = "{common.i18n.code}")
-	private String code;
+    /**
+     * 国际化标识
+     */
+    @NotEmpty(message = "{common.i18n.code}")
+    private String code;
 
-	/**
-	 * 消息
-	 */
-	@NotEmpty(message = "{i18nMessage.message}")
-	private String message;
+    /**
+     * 消息
+     */
+    @NotEmpty(message = "{i18nMessage.message}")
+    private String message;
 
-	/**
-	 * 地区语言标签
-	 */
-	@NotEmpty(message = "{i18nMessage.languageTag}")
-	private String languageTag;
+    /**
+     * 地区语言标签
+     */
+    @NotEmpty(message = "{i18nMessage.languageTag}")
+    private String languageTag;
 
 }

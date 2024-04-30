@@ -1,10 +1,10 @@
 package com.ling.lingcloud.common.security.model;
 
+import lombok.Data;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
-
-import lombok.Data;
 
 /**
  * 简短描述啦.

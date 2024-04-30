@@ -22,14 +22,14 @@ package com.ling.lingcloud.common.datascope.test.datarule.user;
  */
 public enum UserRoleType {
 
-	/**
-	 * 学生
-	 */
-	STUDENT,
+    /**
+     * 学生
+     */
+    STUDENT,
 
-	/**
-	 * 教师
-	 */
-	TEACHER
+    /**
+     * 教师
+     */
+    TEACHER
 
 }

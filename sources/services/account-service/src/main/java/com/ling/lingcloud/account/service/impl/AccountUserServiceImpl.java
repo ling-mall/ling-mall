@@ -2,19 +2,15 @@ package com.ling.lingcloud.account.service.impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.toolkit.Db;
 import com.ling.lingcloud.account.api.convert.AccountUserConvert;
 import com.ling.lingcloud.account.api.dto.AccountUserDTO;
 import com.ling.lingcloud.account.api.entity.AccountUser;
 import com.ling.lingcloud.account.api.vo.AccountUserVO;
 import com.ling.lingcloud.account.mapper.AccountUserMapper;
 import com.ling.lingcloud.account.service.IAccountUserService;
-
 import com.ling.lingcloud.common.mp.domain.PageQuery;
 import com.ling.lingcloud.common.mp.domain.PageResult;
-import com.ling.lingcloud.common.security.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

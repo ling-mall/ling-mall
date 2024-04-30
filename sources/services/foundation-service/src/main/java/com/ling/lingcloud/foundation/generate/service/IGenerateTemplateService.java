@@ -43,5 +43,5 @@ public interface IGenerateTemplateService {
      * @param templateGroupId 模板组id
      * @return 模板树
      */
-    List<Tree<Long>> getTemplateGroupTree(Long templateGroupId);
+    List<Tree<Long>> getTemplateTree(Long templateGroupId);
 }

@@ -1,11 +1,6 @@
 package com.ling.lingcloud.common.redis.config;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
 import com.ling.lingcloud.common.redis.config.properties.RedissonConfigProperties;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
@@ -18,6 +13,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * redisson配置.

@@ -31,24 +31,24 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Configuration(proxyBeanMethods = false)
 public class DataPermissionRuleTestConfiguration {
 
-	@Bean
-	public DataScope classDataScope() {
-		return new ClassDataScope();
-	}
+    @Bean
+    public DataScope classDataScope() {
+        return new ClassDataScope();
+    }
 
-	@Bean
-	public DataScope schoolDataScope() {
-		return new SchoolDataScope();
-	}
+    @Bean
+    public DataScope schoolDataScope() {
+        return new SchoolDataScope();
+    }
 
-	@Bean
-	public DataScope studentDataScope() {
-		return new StudentDataScope();
-	}
+    @Bean
+    public DataScope studentDataScope() {
+        return new StudentDataScope();
+    }
 
-	@Bean
-	public StudentService studentService() {
-		return new StudentService();
-	}
+    @Bean
+    public StudentService studentService() {
+        return new StudentService();
+    }
 
 }

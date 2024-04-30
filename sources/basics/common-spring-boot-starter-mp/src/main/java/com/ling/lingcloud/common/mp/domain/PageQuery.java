@@ -28,39 +28,32 @@ import java.util.List;
 @Data
 public class PageQuery implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 1L;
-
     /**
      * 仅支持字母、数字、下划线.
      */
     public static final String SQL_PATTERN = "[a-zA-Z0-9_]+";
-
     /**
      * 多个 order 的分隔符.
      */
     public static final String ORDER_BY_DELIMITER = ",";
-
     /**
      * order 的连接符.
      */
     public static final String ORDER_BY_CONNECT = ":";
-
     /**
      * 升序 字符，前端传递
      */
     public static final String[] ASC_STRINGS = {"ascending", "asc"};
-
     /**
      * 降序叙 字符，前端传递
      */
     public static final String[] DESC_STRINGS = {"descending", "desc"};
-
     /**
      * 默认排序方式
      */
     public static final String DEFAULT_SORTING_METHOD = "asc";
-
+    @Serial
+    private static final long serialVersionUID = 1L;
     /**
      * 分页大小
      */

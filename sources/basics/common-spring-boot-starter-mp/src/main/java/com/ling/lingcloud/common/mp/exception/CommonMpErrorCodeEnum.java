@@ -1,8 +1,6 @@
 package com.ling.lingcloud.common.mp.exception;
 
-import com.alibaba.druid.wall.violation.ErrorCode;
 import com.ling.lingcloud.common.exception.ErrorManager;
-import com.ling.lingcloud.common.exception.IErrorCode;
 import lombok.Getter;
 
 /**

@@ -1,14 +1,7 @@
 package com.ling.lingcloud.controller;
 
-import cn.dev33.satoken.sso.SaSsoProcessor;
-import cn.dev33.satoken.sso.SaSsoUtil;
-import cn.dev33.satoken.stp.StpUtil;
-import com.ling.lingcloud.common.web.domain.R;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 /**
  * 简短描述啦.

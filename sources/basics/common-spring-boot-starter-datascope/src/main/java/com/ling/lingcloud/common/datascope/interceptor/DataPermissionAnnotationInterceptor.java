@@ -30,27 +30,26 @@ import java.lang.reflect.Method;
  */
 public class DataPermissionAnnotationInterceptor implements MethodInterceptor {
 
-	@Override
-	public Object invoke(MethodInvocation methodInvocation) throws Throwable {
-		// 当前方法
-		Method method = methodInvocation.getMethod();
-		// 获取执行类
-		Object invocationThis = methodInvocation.getThis();
-		Class<?> clazz = invocationThis != null ? invocationThis.getClass() : method.getDeclaringClass();
-		// 寻找对应的 DataPermission 注解属性
-		DataPermission dataPermission = DataPermissionFinder.findDataPermission(method, clazz);
-		// 理论上这里是不会为空的
-		if (dataPermission == null) {
-			return methodInvocation.proceed();
-		}
+    @Override
+    public Object invoke(MethodInvocation methodInvocation) throws Throwable {
+        // 当前方法
+        Method method = methodInvocation.getMethod();
+        // 获取执行类
+        Object invocationThis = methodInvocation.getThis();
+        Class<?> clazz = invocationThis != null ? invocationThis.getClass() : method.getDeclaringClass();
+        // 寻找对应的 DataPermission 注解属性
+        DataPermission dataPermission = DataPermissionFinder.findDataPermission(method, clazz);
+        // 理论上这里是不会为空的
+        if (dataPermission == null) {
+            return methodInvocation.proceed();
+        }
 
-		DataPermissionRuleHolder.push(new DataPermissionRule(dataPermission));
-		try {
-			return methodInvocation.proceed();
-		}
-		finally {
-			DataPermissionRuleHolder.poll();
-		}
-	}
+        DataPermissionRuleHolder.push(new DataPermissionRule(dataPermission));
+        try {
+            return methodInvocation.proceed();
+        } finally {
+            DataPermissionRuleHolder.poll();
+        }
+    }
 
 }

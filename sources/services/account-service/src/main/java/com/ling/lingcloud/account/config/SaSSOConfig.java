@@ -4,7 +4,6 @@ import cn.dev33.satoken.config.SaSsoConfig;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import cn.hutool.json.JSONUtil;
-
 import com.ling.lingcloud.common.web.domain.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

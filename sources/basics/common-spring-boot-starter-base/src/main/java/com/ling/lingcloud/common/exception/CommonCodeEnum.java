@@ -1,7 +1,5 @@
 package com.ling.lingcloud.common.exception;
 
-import com.ling.lingcloud.common.exception.ErrorManager;
-import com.ling.lingcloud.common.exception.IErrorCode;
 import lombok.Getter;
 
 /**
@@ -50,6 +48,15 @@ public enum CommonCodeEnum implements IErrorCode {
     private final String[] parameters;
 
 
+    CommonCodeEnum(Integer responsibleParty, Integer serialId, String messageCode, String[] parameters) {
+        this.responsibleParty = responsibleParty;
+        this.serialId = serialId;
+        this.messageCode = messageCode;
+        this.parameters = parameters;
+
+        ErrorManager.register(this);
+    }
+
     @Override
     public Integer getResponsibleParty() {
         return 0;
@@ -73,14 +80,5 @@ public enum CommonCodeEnum implements IErrorCode {
     @Override
     public String getServerName() {
         return "common";
-    }
-
-    CommonCodeEnum(Integer responsibleParty, Integer serialId, String messageCode, String[] parameters) {
-        this.responsibleParty = responsibleParty;
-        this.serialId = serialId;
-        this.messageCode = messageCode;
-        this.parameters = parameters;
-
-        ErrorManager.register(this);
     }
 }

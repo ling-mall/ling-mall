@@ -1,9 +1,6 @@
 package com.ling.lingcloud.foundation.api.generate.vo.generateentity;
 
-import com.ling.lingcloud.common.domain.base.BaseDTO;
-import com.ling.lingcloud.foundation.api.generate.dto.generateentity.FoundationGenerateEntityRowDTO;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.io.Serializable;

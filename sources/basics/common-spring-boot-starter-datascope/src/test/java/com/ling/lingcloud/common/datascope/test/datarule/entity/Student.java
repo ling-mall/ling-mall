@@ -20,12 +20,12 @@ import lombok.Data;
 @Data
 public class Student {
 
-	private int id;
+    private int id;
 
-	private String name;
+    private String name;
 
-	private String className;
+    private String className;
 
-	private String schoolName;
+    private String schoolName;
 
 }

@@ -1,17 +1,9 @@
 package com.ling.lingcloud.account.controller;
 
-import cn.dev33.satoken.sso.SaSsoConsts;
-import cn.dev33.satoken.sso.SaSsoProcessor;
-import cn.dev33.satoken.sso.SaSsoUtil;
-import cn.dev33.satoken.stp.StpUtil;
-import cn.dev33.satoken.util.SaFoxUtil;
-import com.ling.lingcloud.common.i18n.utils.MessageUtils;
-import com.ling.lingcloud.common.security.dto.LoginBody;
-import com.ling.lingcloud.common.web.domain.R;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 简短描述啦.

@@ -24,14 +24,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DynamicRouteService implements ApplicationEventPublisherAware {
 
-    private ApplicationEventPublisher applicationEventPublisher;
-
     private final CustomRedisRouteDefinitionRepository customRedisRouteDefinitionRepository;
-
-    @Override
-    public void setApplicationEventPublisher(@Nonnull ApplicationEventPublisher applicationEventPublisher) {
-        this.applicationEventPublisher = applicationEventPublisher;
-    }
+    private ApplicationEventPublisher applicationEventPublisher;
 
     /**
      * 构建路由
@@ -49,6 +43,11 @@ public class DynamicRouteService implements ApplicationEventPublisherAware {
         routeDefinition.setPredicates(predicates);
         routeDefinition.setFilters(filters);
         return routeDefinition;
+    }
+
+    @Override
+    public void setApplicationEventPublisher(@Nonnull ApplicationEventPublisher applicationEventPublisher) {
+        this.applicationEventPublisher = applicationEventPublisher;
     }
 
     /**

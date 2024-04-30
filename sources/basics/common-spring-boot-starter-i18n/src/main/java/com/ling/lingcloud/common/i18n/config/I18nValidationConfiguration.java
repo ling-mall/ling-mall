@@ -48,23 +48,21 @@ import org.springframework.validation.beanvalidation.MessageSourceResourceBundle
 @ConditionalOnResource(resources = "classpath:META-INF/services/jakarta.validation.spi.ValidationProvider")
 public class I18nValidationConfiguration {
 
-	@Bean
-	@ConditionalOnBean(MessageSource.class)
-	@ConditionalOnMissingBean({ Validator.class, MessageInterpolator.class })
-	public EmptyCurlyToDefaultMessageInterpolator messageInterpolator(MessageSource messageSource) {
-		log.error("EmptyCurlyToDefaultMessageInterpolator");
-		return new EmptyCurlyToDefaultMessageInterpolator(new MessageSourceResourceBundleLocator(messageSource));
-	}
+    @Bean
+    @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
+    @ConditionalOnMissingBean(Validator.class)
+    @ConditionalOnBean(MessageInterpolator.class)
+    public static LocalValidatorFactoryBean defaultValidator(MessageInterpolator messageInterpolator) {
+        LocalValidatorFactoryBean factoryBean = new LocalValidatorFactoryBean();
+        factoryBean.setMessageInterpolator(messageInterpolator);
+        return factoryBean;
+    }
 
-	@Bean
-	@Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-	@ConditionalOnMissingBean(Validator.class)
-	@ConditionalOnBean(MessageInterpolator.class)
-	public static LocalValidatorFactoryBean defaultValidator(MessageInterpolator messageInterpolator) {
-		log.error("LocalValidatorFactoryBean");
-		LocalValidatorFactoryBean factoryBean = new LocalValidatorFactoryBean();
-		factoryBean.setMessageInterpolator(messageInterpolator);
-		return factoryBean;
-	}
+    @Bean
+    @ConditionalOnBean(MessageSource.class)
+    @ConditionalOnMissingBean({Validator.class, MessageInterpolator.class})
+    public EmptyCurlyToDefaultMessageInterpolator messageInterpolator(MessageSource messageSource) {
+        return new EmptyCurlyToDefaultMessageInterpolator(new MessageSourceResourceBundleLocator(messageSource));
+    }
 
 }

@@ -1,7 +1,6 @@
 package com.ling.lingcloud.common.security.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-
 import lombok.Data;
 
 /**

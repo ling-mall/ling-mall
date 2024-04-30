@@ -1,23 +1,18 @@
 package com.ling.lingcloud.account.mapper;
 
 import com.baomidou.mybatisplus.test.autoconfigure.MybatisPlusTest;
-import com.ling.lingcloud.common.mp.config.MybatisPlusAutoConfiguration;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.TestPropertySource;
 
 import javax.sql.DataSource;
-
 import java.sql.Connection;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * 账户表单元测试.
@@ -33,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
         "spring.datasource.url=jdbc:h2:mem:aaa_rbac_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL;DATABASE_TO_LOWER=TRUE",
         "spring.datasource.username=sa"
 })
-class AccountUserMapperTest{
+class AccountUserMapperTest {
 
     @Autowired
     AccountUserMapper accountUserMapper;

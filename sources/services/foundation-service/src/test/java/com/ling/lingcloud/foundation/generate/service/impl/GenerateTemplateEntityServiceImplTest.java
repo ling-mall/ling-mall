@@ -6,6 +6,7 @@ import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGe
 import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityVO;
 import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityValueVO;
 import com.ling.lingcloud.foundation.generate.mapper.GenerateEntityMapper;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,6 +34,36 @@ class GenerateTemplateEntityServiceImplTest {
     @InjectMocks
     GenerateTemplateEntityServiceImpl generateTemplateEntityServiceImpl;
 
+    private static @NotNull FoundationGenerateEntityVO getFoundationGenerateEntityVO() {
+        FoundationGenerateEntityVO foundationGenerateEntityVO = new FoundationGenerateEntityVO();
+        foundationGenerateEntityVO.setGroupId(null);
+        foundationGenerateEntityVO.setEntityName("User");
+        List<FoundationGenerateEntityRowVO> rows = new ArrayList<>();
+        FoundationGenerateEntityRowVO row = getFoundationGenerateEntityRowVO();
+        rows.add(row);
+        foundationGenerateEntityVO.setRows(rows);
+        return foundationGenerateEntityVO;
+    }
+
+    private static @NotNull FoundationGenerateEntityRowVO getFoundationGenerateEntityRowVO() {
+        FoundationGenerateEntityRowVO row = new FoundationGenerateEntityRowVO();
+        row.setId(1L);
+        row.setIndex(1L);
+        row.setEntityId(1L);
+        List<FoundationGenerateEntityColumnVO> columns = new ArrayList<>();
+        FoundationGenerateEntityColumnVO column = new FoundationGenerateEntityColumnVO();
+        column.setId(1L);
+        column.setColumnName("mysqlColumnName");
+        column.setValue("user_name");
+        column.setIsRequired(0);
+        columns.add(column);
+        row.setColumns(columns);
+        return row;
+    }
+
+    public static void main(String[] args) {
+
+    }
 
     @Test
     void testGetTemplateEntity() {
@@ -59,33 +90,9 @@ class GenerateTemplateEntityServiceImplTest {
         foundationGenerateEntityValueVO.setColumnId(1L);
         foundationGenerateEntityValueVO.setRowId(1L);
         when(mapper.listValueByEntityId(anyLong())).thenReturn(List.of(foundationGenerateEntityValueVO));
-
-
         FoundationGenerateEntityVO result = generateTemplateEntityServiceImpl.getTemplateEntity(1L);
-        FoundationGenerateEntityVO foundationGenerateEntityVO = new FoundationGenerateEntityVO();
-        foundationGenerateEntityVO.setGroupId(null);
-        foundationGenerateEntityVO.setEntityName("User");
-        List<FoundationGenerateEntityRowVO> rows = new ArrayList<>();
-        FoundationGenerateEntityRowVO row = new FoundationGenerateEntityRowVO();
-        row.setId(1L);
-        row.setIndex(1L);
-        row.setEntityId(1L);
-        List<FoundationGenerateEntityColumnVO> columns = new ArrayList<>();
-        FoundationGenerateEntityColumnVO column = new FoundationGenerateEntityColumnVO();
-        column.setId(1L);
-        column.setColumnName("mysqlColumnName");
-        column.setValue("user_name");
-        column.setIsRequired(0);
-        columns.add(column);
-        row.setColumns(columns);
-        rows.add(row);
-        foundationGenerateEntityVO.setRows(rows);
+        FoundationGenerateEntityVO foundationGenerateEntityVO = getFoundationGenerateEntityVO();
         Assertions.assertEquals(foundationGenerateEntityVO, result);
-    }
-
-
-    public static void main(String[] args) {
-
     }
 }
 

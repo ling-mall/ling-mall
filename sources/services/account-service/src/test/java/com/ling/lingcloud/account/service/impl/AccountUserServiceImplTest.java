@@ -21,16 +21,12 @@ import static org.mockito.Mockito.*;
  */
 @ExtendWith(MockitoExtension.class)
 class AccountUserServiceImplTest {
+    private final String username = "admin";
     @Mock
     AccountUserMapper accountUserMapper;
-
     @InjectMocks
     AccountUserServiceImpl accountUserService;
-
-
-
     private AccountUser expectedUser;
-    private final String username = "admin";
 
     @BeforeEach
     void setUp() {

@@ -40,125 +40,126 @@ import java.util.Map;
 @UtilityClass
 public class PluginUtils {
 
-	public final String DELEGATE_BOUNDSQL_SQL = "delegate.boundSql.sql";
+    public final String DELEGATE_BOUNDSQL_SQL = "delegate.boundSql.sql";
 
-	/**
-	 * 获得真正的处理对象,可能多层代理.
-	 */
-	@SuppressWarnings("unchecked")
-	public <T> T realTarget(Object target) {
-		if (Proxy.isProxyClass(target.getClass())) {
-			MetaObject metaObject = SystemMetaObject.forObject(target);
-			return realTarget(metaObject.getValue("h.target"));
-		}
-		return (T) target;
-	}
+    /**
+     * 获得真正的处理对象,可能多层代理.
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T realTarget(Object target) {
+        if (Proxy.isProxyClass(target.getClass())) {
+            MetaObject metaObject = SystemMetaObject.forObject(target);
+            return realTarget(metaObject.getValue("h.target"));
+        }
+        return (T) target;
+    }
 
-	/**
-	 * 给 BoundSql 设置 additionalParameters
-	 * @param boundSql BoundSql
-	 * @param additionalParameters additionalParameters
-	 */
-	public void setAdditionalParameter(BoundSql boundSql, Map<String, Object> additionalParameters) {
-		additionalParameters.forEach(boundSql::setAdditionalParameter);
-	}
+    /**
+     * 给 BoundSql 设置 additionalParameters
+     *
+     * @param boundSql             BoundSql
+     * @param additionalParameters additionalParameters
+     */
+    public void setAdditionalParameter(BoundSql boundSql, Map<String, Object> additionalParameters) {
+        additionalParameters.forEach(boundSql::setAdditionalParameter);
+    }
 
-	public MPBoundSql mpBoundSql(BoundSql boundSql) {
-		return new MPBoundSql(boundSql);
-	}
+    public MPBoundSql mpBoundSql(BoundSql boundSql) {
+        return new MPBoundSql(boundSql);
+    }
 
-	public MPStatementHandler mpStatementHandler(StatementHandler statementHandler) {
-		statementHandler = realTarget(statementHandler);
-		MetaObject object = SystemMetaObject.forObject(statementHandler);
-		return new MPStatementHandler(SystemMetaObject.forObject(object.getValue("delegate")));
-	}
+    public MPStatementHandler mpStatementHandler(StatementHandler statementHandler) {
+        statementHandler = realTarget(statementHandler);
+        MetaObject object = SystemMetaObject.forObject(statementHandler);
+        return new MPStatementHandler(SystemMetaObject.forObject(object.getValue("delegate")));
+    }
 
-	/**
-	 * {@link org.apache.ibatis.executor.statement.BaseStatementHandler}
-	 */
-	public static class MPStatementHandler {
+    /**
+     * {@link org.apache.ibatis.executor.statement.BaseStatementHandler}
+     */
+    public static class MPStatementHandler {
 
-		private final MetaObject statementHandler;
+        private final MetaObject statementHandler;
 
-		MPStatementHandler(MetaObject statementHandler) {
-			this.statementHandler = statementHandler;
-		}
+        MPStatementHandler(MetaObject statementHandler) {
+            this.statementHandler = statementHandler;
+        }
 
-		public ParameterHandler parameterHandler() {
-			return get("parameterHandler");
-		}
+        public ParameterHandler parameterHandler() {
+            return get("parameterHandler");
+        }
 
-		public MappedStatement mappedStatement() {
-			return get("mappedStatement");
-		}
+        public MappedStatement mappedStatement() {
+            return get("mappedStatement");
+        }
 
-		public Executor executor() {
-			return get("executor");
-		}
+        public Executor executor() {
+            return get("executor");
+        }
 
-		public MPBoundSql mPBoundSql() {
-			return new MPBoundSql(boundSql());
-		}
+        public MPBoundSql mPBoundSql() {
+            return new MPBoundSql(boundSql());
+        }
 
-		public BoundSql boundSql() {
-			return get("boundSql");
-		}
+        public BoundSql boundSql() {
+            return get("boundSql");
+        }
 
-		public Configuration configuration() {
-			return get("configuration");
-		}
+        public Configuration configuration() {
+            return get("configuration");
+        }
 
-		@SuppressWarnings("unchecked")
-		private <T> T get(String property) {
-			return (T) statementHandler.getValue(property);
-		}
+        @SuppressWarnings("unchecked")
+        private <T> T get(String property) {
+            return (T) statementHandler.getValue(property);
+        }
 
-	}
+    }
 
-	/**
-	 * {@link BoundSql}
-	 */
-	public static class MPBoundSql {
+    /**
+     * {@link BoundSql}
+     */
+    public static class MPBoundSql {
 
-		private final MetaObject boundSql;
+        private final MetaObject boundSql;
 
-		private final BoundSql delegate;
+        private final BoundSql delegate;
 
-		MPBoundSql(BoundSql boundSql) {
-			this.delegate = boundSql;
-			this.boundSql = SystemMetaObject.forObject(boundSql);
-		}
+        MPBoundSql(BoundSql boundSql) {
+            this.delegate = boundSql;
+            this.boundSql = SystemMetaObject.forObject(boundSql);
+        }
 
-		public String sql() {
-			return delegate.getSql();
-		}
+        public String sql() {
+            return delegate.getSql();
+        }
 
-		public void sql(String sql) {
-			boundSql.setValue("sql", sql);
-		}
+        public void sql(String sql) {
+            boundSql.setValue("sql", sql);
+        }
 
-		public List<ParameterMapping> parameterMappings() {
-			List<ParameterMapping> parameterMappings = delegate.getParameterMappings();
-			return new ArrayList<>(parameterMappings);
-		}
+        public List<ParameterMapping> parameterMappings() {
+            List<ParameterMapping> parameterMappings = delegate.getParameterMappings();
+            return new ArrayList<>(parameterMappings);
+        }
 
-		public void parameterMappings(List<ParameterMapping> parameterMappings) {
-			boundSql.setValue("parameterMappings", Collections.unmodifiableList(parameterMappings));
-		}
+        public void parameterMappings(List<ParameterMapping> parameterMappings) {
+            boundSql.setValue("parameterMappings", Collections.unmodifiableList(parameterMappings));
+        }
 
-		public Object parameterObject() {
-			return get("parameterObject");
-		}
+        public Object parameterObject() {
+            return get("parameterObject");
+        }
 
-		public Map<String, Object> additionalParameters() {
-			return get("additionalParameters");
-		}
+        public Map<String, Object> additionalParameters() {
+            return get("additionalParameters");
+        }
 
-		@SuppressWarnings("unchecked")
-		private <T> T get(String property) {
-			return (T) boundSql.getValue(property);
-		}
+        @SuppressWarnings("unchecked")
+        private <T> T get(String property) {
+            return (T) boundSql.getValue(property);
+        }
 
-	}
+    }
 
 }

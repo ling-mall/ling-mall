@@ -31,26 +31,26 @@ import java.util.List;
 @Service
 public class StudentService {
 
-	@Autowired
-	private StudentMapper studentMapper;
+    @Autowired
+    private StudentMapper studentMapper;
 
-	public List<Student> listStudent() {
-		return studentMapper.listStudent();
-	}
+    public List<Student> listStudent() {
+        return studentMapper.listStudent();
+    }
 
-	@DataPermission(includeResources = ClassDataScope.RESOURCE_NAME)
-	public List<Student> listStudentOnlyFilterClass() {
-		return studentMapper.listStudent();
-	}
+    @DataPermission(includeResources = ClassDataScope.RESOURCE_NAME)
+    public List<Student> listStudentOnlyFilterClass() {
+        return studentMapper.listStudent();
+    }
 
-	@DataPermission(includeResources = SchoolDataScope.RESOURCE_NAME)
-	public List<Student> listStudentOnlyFilterSchool() {
-		return studentMapper.listStudent();
-	}
+    @DataPermission(includeResources = SchoolDataScope.RESOURCE_NAME)
+    public List<Student> listStudentOnlyFilterSchool() {
+        return studentMapper.listStudent();
+    }
 
-	@DataPermission(ignore = true)
-	public List<Student> listStudentWithoutDataPermission() {
-		return studentMapper.listStudent();
-	}
+    @DataPermission(ignore = true)
+    public List<Student> listStudentWithoutDataPermission() {
+        return studentMapper.listStudent();
+    }
 
 }

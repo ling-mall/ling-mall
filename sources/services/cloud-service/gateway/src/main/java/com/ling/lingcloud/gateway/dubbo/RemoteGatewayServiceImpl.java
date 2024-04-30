@@ -4,16 +4,16 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ReUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.ling.lingcloud.common.constants.Regular;
-import com.ling.lingcloud.common.mp.domain.PageResult;
 import com.ling.lingcloud.common.mp.domain.PageQuery;
+import com.ling.lingcloud.common.mp.domain.PageResult;
 import com.ling.lingcloud.gateway.api.RemoteGatewayService;
 import com.ling.lingcloud.gateway.api.domain.GatewayRoute;
 import com.ling.lingcloud.gateway.api.dto.GatewayRouteDTO;
 import com.ling.lingcloud.gateway.constants.GatewayConstant;
 import com.ling.lingcloud.gateway.dynamicroute.DynamicRouteService;
 import com.ling.lingcloud.gateway.enums.GatewayRouteItemTypeEnums;
-import com.ling.lingcloud.gateway.mapper.GatewayRouteMapper;
 import com.ling.lingcloud.gateway.mapper.GatewayRouteItemMapper;
+import com.ling.lingcloud.gateway.mapper.GatewayRouteMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -46,6 +46,23 @@ public class RemoteGatewayServiceImpl implements RemoteGatewayService {
 
     private final DynamicRouteService dynamicRouteService;
 
+    /**
+     * @param uriStr uri 字符串
+     * @return URI 对象
+     */
+    private static URI builderUri(String uriStr) {
+        // lb
+        if (ReUtil.isMatch(GatewayConstant.LB_URI_REGEX, uriStr)) {
+            return UriComponentsBuilder.fromUriString(uriStr).build().toUri();
+        }
+        // http
+        if (ReUtil.isMatch(Regular.INTERNET_URL, uriStr)) {
+            return UriComponentsBuilder.fromHttpUrl(uriStr).build().toUri();
+        }
+        // ws 等
+        return UriComponentsBuilder.fromUriString(uriStr).build().toUri();
+    }
+
     @Override
     public PageResult<GatewayRoute> listPageGatewayRoute(GatewayRouteDTO dto, PageQuery pageQuery) {
         return PageResult.build(
@@ -55,7 +72,6 @@ public class RemoteGatewayServiceImpl implements RemoteGatewayService {
                 )
         );
     }
-
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -97,7 +113,6 @@ public class RemoteGatewayServiceImpl implements RemoteGatewayService {
         return isSuccess;
     }
 
-
     @Override
     public void loadRouter() {
         log.info("从数据库加载路由");
@@ -127,22 +142,5 @@ public class RemoteGatewayServiceImpl implements RemoteGatewayService {
         });
         dynamicRouteService.publish();
 
-    }
-
-    /**
-     * @param uriStr uri 字符串
-     * @return URI 对象
-     */
-    private static URI builderUri(String uriStr) {
-        // lb
-        if (ReUtil.isMatch(GatewayConstant.LB_URI_REGEX, uriStr)) {
-            return UriComponentsBuilder.fromUriString(uriStr).build().toUri();
-        }
-        // http
-        if (ReUtil.isMatch(Regular.INTERNET_URL, uriStr)) {
-            return UriComponentsBuilder.fromHttpUrl(uriStr).build().toUri();
-        }
-        // ws 等
-        return UriComponentsBuilder.fromUriString(uriStr).build().toUri();
     }
 }

@@ -42,7 +42,7 @@ public class GenerateTemplateServiceImpl implements IGenerateTemplateService {
     }
 
     @Override
-    public List<Tree<Long>> getTemplateGroupTree(Long templateGroupId) {
+    public List<Tree<Long>> getTemplateTree(Long templateGroupId) {
         List<FoundationGenerateTemplate> foundationGenerateTemplates = mapper.listByTemplateGroupId(templateGroupId);
         //配置
         TreeNodeConfig treeNodeConfig = new TreeNodeConfig();

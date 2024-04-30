@@ -31,19 +31,19 @@ import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
 @EqualsAndHashCode(callSuper = true)
 public class DataPermissionAnnotationAdvisor extends AbstractPointcutAdvisor {
 
-	private final Advice advice;
+    private final Advice advice;
 
-	private final Pointcut pointcut;
+    private final Pointcut pointcut;
 
-	public DataPermissionAnnotationAdvisor() {
-		this.advice = new DataPermissionAnnotationInterceptor();
-		this.pointcut = buildPointcut();
-	}
+    public DataPermissionAnnotationAdvisor() {
+        this.advice = new DataPermissionAnnotationInterceptor();
+        this.pointcut = buildPointcut();
+    }
 
-	protected Pointcut buildPointcut() {
-		Pointcut cpc = new AnnotationMatchingPointcut(DataPermission.class, true);
-		Pointcut mpc = new AnnotationMatchingPointcut(null, DataPermission.class, true);
-		return new ComposablePointcut(cpc).union(mpc);
-	}
+    protected Pointcut buildPointcut() {
+        Pointcut cpc = new AnnotationMatchingPointcut(DataPermission.class, true);
+        Pointcut mpc = new AnnotationMatchingPointcut(null, DataPermission.class, true);
+        return new ComposablePointcut(cpc).union(mpc);
+    }
 
 }

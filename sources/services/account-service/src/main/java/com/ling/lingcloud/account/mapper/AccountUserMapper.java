@@ -3,7 +3,6 @@ package com.ling.lingcloud.account.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.toolkit.Db;
-import com.ling.lingcloud.account.api.convert.AccountUserConvert;
 import com.ling.lingcloud.account.api.entity.AccountUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -39,7 +38,7 @@ public interface AccountUserMapper extends BaseMapper<AccountUser> {
      * @param accountUserList 用户信息
      * @return 是否成功
      */
-    default Boolean  insertAccountUserList(List<AccountUser> accountUserList){
+    default Boolean insertAccountUserList(List<AccountUser> accountUserList) {
         return Db.saveBatch(accountUserList);
     }
 }

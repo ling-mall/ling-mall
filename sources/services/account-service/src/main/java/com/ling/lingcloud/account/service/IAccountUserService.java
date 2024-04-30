@@ -4,8 +4,8 @@ package com.ling.lingcloud.account.service;
 import com.ling.lingcloud.account.api.dto.AccountUserDTO;
 import com.ling.lingcloud.account.api.entity.AccountUser;
 import com.ling.lingcloud.account.api.vo.AccountUserVO;
-import com.ling.lingcloud.common.mp.domain.PageResult;
 import com.ling.lingcloud.common.mp.domain.PageQuery;
+import com.ling.lingcloud.common.mp.domain.PageResult;
 
 import java.util.List;
 

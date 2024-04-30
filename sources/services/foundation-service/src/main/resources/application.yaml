@@ -41,4 +41,18 @@ spring:
     # 国际化资源文件路径
     basename: i18n/**/*
     encoding: UTF-8
-
+logging:
+  level:
+    org.springframework: warn
+    com:
+      baomidou:
+        mybatisplus: DEBUG
+  config: classpath:logback-common.xml
+---
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+      multiline: true
+      logging: custom
+      custom-appender-class: com.ling.lingcloud.common.mp.p6spy.MyStdoutLogger

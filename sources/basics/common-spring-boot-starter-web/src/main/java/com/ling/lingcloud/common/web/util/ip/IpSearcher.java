@@ -1,7 +1,5 @@
 package com.ling.lingcloud.common.web.util.ip;
 
-import java.io.File;
-
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.ObjectUtil;
@@ -9,6 +7,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.lionsoul.ip2region.xdb.Searcher;
+
+import java.io.File;
 
 /**
  * 根据 ip 地址定位工具类，离线方式.

@@ -1,7 +1,5 @@
 package com.ling.lingcloud.account.service.impl;
 
-import java.util.List;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ling.lingcloud.account.api.convert.AccountDeptConvert;
@@ -12,9 +10,10 @@ import com.ling.lingcloud.account.mapper.AccountDeptMapper;
 import com.ling.lingcloud.account.service.IAccountDeptService;
 import com.ling.lingcloud.common.mp.domain.PageQuery;
 import com.ling.lingcloud.common.mp.domain.PageResult;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 部门服务实现.

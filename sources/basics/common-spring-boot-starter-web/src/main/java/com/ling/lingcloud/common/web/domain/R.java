@@ -1,8 +1,8 @@
 package com.ling.lingcloud.common.web.domain;
 
 import com.ling.lingcloud.common.domain.Result;
-import com.ling.lingcloud.common.exception.IErrorCode;
 import com.ling.lingcloud.common.exception.CommonCodeEnum;
+import com.ling.lingcloud.common.exception.IErrorCode;
 import com.ling.lingcloud.common.web.util.MessageUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

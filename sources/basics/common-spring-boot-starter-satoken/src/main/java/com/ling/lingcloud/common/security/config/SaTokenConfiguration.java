@@ -1,10 +1,9 @@
 package com.ling.lingcloud.common.security.config;
 
 
+import cn.dev33.satoken.interceptor.SaInterceptor;
 import com.ling.lingcloud.common.security.service.SecurityService;
 import com.ling.lingcloud.common.security.service.SecurityServiceImpl;
-
-import cn.dev33.satoken.interceptor.SaInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;

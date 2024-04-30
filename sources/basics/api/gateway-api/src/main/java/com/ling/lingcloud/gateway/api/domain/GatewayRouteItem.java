@@ -15,7 +15,7 @@ import java.io.Serial;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class GatewayRouteItem extends BaseEntity  {
+public class GatewayRouteItem extends BaseEntity {
 
     @Serial
     private static final long serialVersionUID = 1L;

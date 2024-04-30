@@ -152,8 +152,8 @@ public interface PermissionMapper {
     /**
      * 删除 部门 角色.
      *
-     * @param deptId 部门id
-     * @param roleIds      角色id
+     * @param deptId  部门id
+     * @param roleIds 角色id
      * @return 影响行数
      */
     int deleteDeptRoles(@Param("deptId") Long deptId, @Param("roleIds") List<Long> roleIds);
@@ -161,8 +161,8 @@ public interface PermissionMapper {
     /**
      * 设置 部门 角色.
      *
-     * @param deptId 部门id
-     * @param roleIds      角色id
+     * @param deptId  部门id
+     * @param roleIds 角色id
      * @return 影响行数
      */
     int setDeptRoles(@Param("deptId") Long deptId, @Param("roleIds") List<Long> roleIds);

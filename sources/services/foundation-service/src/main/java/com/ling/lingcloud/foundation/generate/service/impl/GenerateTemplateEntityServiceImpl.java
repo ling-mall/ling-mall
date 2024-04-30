@@ -36,21 +36,20 @@ public class GenerateTemplateEntityServiceImpl implements IGenerateTemplateEntit
             List<FoundationGenerateEntityColumnVO> columns = mapper.listColumnByEntityId(entityId);
             List<FoundationGenerateEntityValueVO> values = mapper.listValueByEntityId(entityId);
             rows.forEach(row -> {
-
-                List<FoundationGenerateEntityValueVO> collect = values.stream()
+                List<FoundationGenerateEntityValueVO> valuesVoList = values.stream()
                         .filter(value -> value.getRowId().equals(row.getId()))
                         .toList();
 
                 List<FoundationGenerateEntityColumnVO> columnList = new ArrayList<>();
-                collect.forEach(value -> {
-                    columns.stream()
-                            .filter(c -> c.getId().equals(value.getColumnId()))
-                            .findFirst()
-                            .ifPresent(c -> {
-                                c.setValue(value.getValue());
-                                columnList.add(c);
-                            });
-                });
+                valuesVoList.forEach(value ->
+
+                        columns.stream()
+                                .filter(c -> c.getId().equals(value.getColumnId()))
+                                .findFirst()
+                                .ifPresent(c -> {
+                                    c.setValue(value.getValue());
+                                    columnList.add(c);
+                                }));
                 row.setColumns(columnList);
             });
             foundationGenerateEntityVO.setRows(rows);
@@ -58,5 +57,4 @@ public class GenerateTemplateEntityServiceImpl implements IGenerateTemplateEntit
         }
         return new FoundationGenerateEntityVO();
     }
-
 }

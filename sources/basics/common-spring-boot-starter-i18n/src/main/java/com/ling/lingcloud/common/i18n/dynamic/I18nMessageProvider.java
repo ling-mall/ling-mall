@@ -9,12 +9,13 @@ import java.util.Locale;
  */
 public interface I18nMessageProvider {
 
-	/**
-	 * 获取 I18nMessage 对象
-	 * @param code 国际化唯一标识
-	 * @param locale 语言
-	 * @return 国际化消息
-	 */
-	I18nMessage getI18nMessage(String code, Locale locale);
+    /**
+     * 获取 I18nMessage 对象
+     *
+     * @param code   国际化唯一标识
+     * @param locale 语言
+     * @return 国际化消息
+     */
+    I18nMessage getI18nMessage(String code, Locale locale);
 
 }

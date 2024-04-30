@@ -1,9 +1,6 @@
 package com.ling.lingcloud.account.mapper;
 
-import com.alibaba.nacos.shaded.com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 简短描述啦.

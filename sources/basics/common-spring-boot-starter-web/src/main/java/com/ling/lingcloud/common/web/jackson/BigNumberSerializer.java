@@ -1,13 +1,12 @@
 package com.ling.lingcloud.common.web.jackson;
 
-import java.io.IOException;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
 import com.fasterxml.jackson.databind.ser.std.NumberSerializer;
-
 import lombok.extern.slf4j.Slf4j;
+
+import java.io.IOException;
 
 /**
  * 超出 JS 最大最小值 处理.

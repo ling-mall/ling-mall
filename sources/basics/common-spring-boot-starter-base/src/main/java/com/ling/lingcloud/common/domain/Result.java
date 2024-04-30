@@ -1,14 +1,12 @@
 package com.ling.lingcloud.common.domain;
 
-import java.io.Serial;
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
-
-import cn.hutool.http.HttpStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 /**
  * 通用返回对象.

@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 简短描述啦.
- * 详细说说
+ * 模板接口.
  * Class created on 2024/4/12 by 钟舒艺
  *
  * @author 钟舒艺
@@ -23,7 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/foundation/generate/template")
 @RequiredArgsConstructor
-public class FoundationGenerateTemplateController {
+public class GenerateTemplateController {
 
     private final IGenerateTemplateService generateTemplateService;
 
@@ -61,15 +60,12 @@ public class FoundationGenerateTemplateController {
     }
 
     /**
-     * 获取模板组树.
+     * 获取模板树.
      *
-     * @param userId 用户id
-     * @return 模板组树
+     * @return 模板树
      */
-    @GetMapping("/tree")
-    public R<List<Tree<Long>>> getTemplateGroupTree(Long userId, Long templateGroupId) {
-        return R.success(generateTemplateService.getTemplateGroupTree(templateGroupId));
+    @GetMapping("/{templateGroupId}/tree")
+    public R<List<Tree<Long>>> getTemplateGroupTree(@PathVariable Long templateGroupId) {
+        return R.success(generateTemplateService.getTemplateTree(templateGroupId));
     }
-
-
 }

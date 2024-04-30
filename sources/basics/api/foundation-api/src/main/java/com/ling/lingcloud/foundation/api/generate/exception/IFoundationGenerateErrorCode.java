@@ -25,7 +25,7 @@ public interface IFoundationGenerateErrorCode extends IErrorCode {
     }
 
     @Override
-    default String  getModuleName() {
+    default String getModuleName() {
         return MODULE_NAME;
     }
 }

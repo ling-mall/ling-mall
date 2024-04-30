@@ -26,16 +26,18 @@ public interface IErrorCode {
     /**
      * 微服务标识（一级宏观错误码）
      */
-   default Integer getServerId(){
-       return SpringUtil.getBean(CustomConfig.class).getApp().getServiceId();
-   }
+    default Integer getServerId() {
+        return SpringUtil.getBean(CustomConfig.class).getApp().getServiceId();
+    }
 
     /**
      * 服务名
      */
-    default  String getServerName(){
+    default String getServerName() {
         return SpringUtil.getProperty("spring.application.name");
-    };
+    }
+
+    ;
 
     /**
      * 模块id （二级宏观错误码）

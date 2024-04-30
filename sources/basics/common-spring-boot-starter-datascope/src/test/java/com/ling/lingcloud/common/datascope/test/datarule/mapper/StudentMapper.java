@@ -24,7 +24,7 @@ import java.util.List;
 @Mapper
 public interface StudentMapper {
 
-	@Select("select * from h2student")
-	List<Student> listStudent();
+    @Select("select * from h2student")
+    List<Student> listStudent();
 
 }

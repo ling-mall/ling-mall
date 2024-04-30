@@ -7,34 +7,52 @@
         VALUES (#{id}, #{index}, #{entityId})
     </insert>
     <delete id="deleteRow">
-        DELETE FROM foundation_generate_entity_row WHERE id = #{rowId}
+        DELETE
+        FROM foundation_generate_entity_row
+        WHERE id = #{rowId}
     </delete>
     <delete id="deleteRowByEntityId">
-        DELETE FROM foundation_generate_entity_row WHERE entity_id = #{entityId}
+        DELETE
+        FROM foundation_generate_entity_row
+        WHERE entity_id = #{entityId}
     </delete>
     <delete id="deleteColumn">
-        DELETE FROM foundation_generate_entity_column WHERE id = #{columnId}
+        DELETE
+        FROM foundation_generate_entity_column
+        WHERE id = #{columnId}
     </delete>
     <delete id="deleteColumnByEntityId">
-        DELETE FROM foundation_generate_entity_column WHERE entity_id = #{entityId}
+        DELETE
+        FROM foundation_generate_entity_column
+        WHERE entity_id = #{entityId}
     </delete>
     <delete id="deleteValue">
-        DELETE FROM foundation_generate_entity_value WHERE id = #{valueId}
+        DELETE
+        FROM foundation_generate_entity_value
+        WHERE id = #{valueId}
     </delete>
     <delete id="deleteValueByEntityId">
-        DELETE FROM foundation_generate_entity_value WHERE entity_id = #{entityId}
+        DELETE
+        FROM foundation_generate_entity_value
+        WHERE entity_id = #{entityId}
     </delete>
     <delete id="deleteValueByRowId">
-        DELETE FROM foundation_generate_entity_value WHERE entity_row_id = #{rowId}
+        DELETE
+        FROM foundation_generate_entity_value
+        WHERE entity_row_id = #{rowId}
     </delete>
 
     <delete id="deleteValueByColumnId">
-        DELETE FROM foundation_generate_entity_value WHERE entity_column_id = #{columnId}
+        DELETE
+        FROM foundation_generate_entity_value
+        WHERE entity_column_id = #{columnId}
     </delete>
 
     <select id="listRowByEntityId"
             resultType="com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityRowVO">
-        SELECT id, entity_id, `index` FROM foundation_generate_entity_row WHERE entity_id = #{entityId}
+        SELECT id, entity_id, `index`
+        FROM foundation_generate_entity_row
+        WHERE entity_id = #{entityId}
     </select>
 
     <select id="listColumnByEntityId"

@@ -23,9 +23,9 @@ package com.ling.lingcloud.common.datascope.function;
 @FunctionalInterface
 public interface ResultAction<T> {
 
-	/**
-	 * 执行操作
-	 */
-	T execute();
+    /**
+     * 执行操作
+     */
+    T execute();
 
 }

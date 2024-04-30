@@ -23,10 +23,10 @@ import com.ling.lingcloud.common.datascope.handler.DataPermissionRule;
  */
 public interface TestService {
 
-	DataPermissionRule methodA();
+    DataPermissionRule methodA();
 
-	DataPermissionRule methodB();
+    DataPermissionRule methodB();
 
-	DataPermissionRule methodC();
+    DataPermissionRule methodC();
 
 }

@@ -2,7 +2,6 @@ package com.ling.lingcloud.common.security.handler;
 
 
 import cn.dev33.satoken.exception.NotLoginException;
-import com.ling.lingcloud.common.domain.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

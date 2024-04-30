@@ -9,6 +9,19 @@ package com.ling.lingcloud.common.validation;
 public class ValidationGroups {
 
     /**
+     * 添加时校验标识.
+     */
+    public static final Class<Add> ADD = Add.class;
+    /**
+     * 修改时校验标识.
+     */
+    public static final Class<Edit> EDIT = Edit.class;
+    /**
+     * 查询时校验标识.
+     */
+    public static final Class<Query> QUERY = Query.class;
+
+    /**
      * 添加时校验.
      */
     public interface Add {
@@ -25,20 +38,5 @@ public class ValidationGroups {
      */
     public interface Query {
     }
-
-    /**
-     * 添加时校验标识.
-     */
-    public static final Class<Add> ADD = Add.class;
-
-    /**
-     * 修改时校验标识.
-     */
-    public static final Class<Edit> EDIT = Edit.class;
-
-    /**
-     * 查询时校验标识.
-     */
-    public static final Class<Query> QUERY = Query.class;
 
 }

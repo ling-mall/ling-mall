@@ -31,54 +31,56 @@ import java.util.Deque;
  */
 public final class DataPermissionRuleHolder {
 
-	private DataPermissionRuleHolder() {
-	}
+    /**
+     * 使用栈存储 DataPermissionRule，便于在方法嵌套调用时使用不同的数据权限控制。
+     */
+    private static final ThreadLocal<Deque<DataPermissionRule>> DATA_PERMISSION_RULES = ThreadLocal
+            .withInitial(ArrayDeque::new);
 
-	/**
-	 * 使用栈存储 DataPermissionRule，便于在方法嵌套调用时使用不同的数据权限控制。
-	 */
-	private static final ThreadLocal<Deque<DataPermissionRule>> DATA_PERMISSION_RULES = ThreadLocal
-		.withInitial(ArrayDeque::new);
+    private DataPermissionRuleHolder() {
+    }
 
-	/**
-	 * 获取当前的 DataPermissionRule 注解
-	 * @return DataPermissionRule
-	 */
-	public static DataPermissionRule peek() {
-		Deque<DataPermissionRule> deque = DATA_PERMISSION_RULES.get();
-		return deque == null ? null : deque.peek();
-	}
+    /**
+     * 获取当前的 DataPermissionRule 注解
+     *
+     * @return DataPermissionRule
+     */
+    public static DataPermissionRule peek() {
+        Deque<DataPermissionRule> deque = DATA_PERMISSION_RULES.get();
+        return deque == null ? null : deque.peek();
+    }
 
-	/**
-	 * 入栈一个 DataPermissionRule 注解
-	 * @return DataPermissionRule
-	 */
-	public static DataPermissionRule push(DataPermissionRule dataPermissionRule) {
-		Deque<DataPermissionRule> deque = DATA_PERMISSION_RULES.get();
-		if (deque == null) {
-			deque = new ArrayDeque<>();
-		}
-		deque.push(dataPermissionRule);
-		return dataPermissionRule;
-	}
+    /**
+     * 入栈一个 DataPermissionRule 注解
+     *
+     * @return DataPermissionRule
+     */
+    public static DataPermissionRule push(DataPermissionRule dataPermissionRule) {
+        Deque<DataPermissionRule> deque = DATA_PERMISSION_RULES.get();
+        if (deque == null) {
+            deque = new ArrayDeque<>();
+        }
+        deque.push(dataPermissionRule);
+        return dataPermissionRule;
+    }
 
-	/**
-	 * 弹出最顶部 DataPermissionRule
-	 */
-	public static void poll() {
-		Deque<DataPermissionRule> deque = DATA_PERMISSION_RULES.get();
-		deque.poll();
-		// 当没有元素时，清空 ThreadLocal
-		if (deque.isEmpty()) {
-			clear();
-		}
-	}
+    /**
+     * 弹出最顶部 DataPermissionRule
+     */
+    public static void poll() {
+        Deque<DataPermissionRule> deque = DATA_PERMISSION_RULES.get();
+        deque.poll();
+        // 当没有元素时，清空 ThreadLocal
+        if (deque.isEmpty()) {
+            clear();
+        }
+    }
 
-	/**
-	 * 清除 TreadLocal
-	 */
-	public static void clear() {
-		DATA_PERMISSION_RULES.remove();
-	}
+    /**
+     * 清除 TreadLocal
+     */
+    public static void clear() {
+        DATA_PERMISSION_RULES.remove();
+    }
 
 }

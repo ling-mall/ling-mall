@@ -1,6 +1,5 @@
 package com.ling.lingcloud.common.mp.constants;
 
-import cn.hutool.core.text.CharSequenceUtil;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

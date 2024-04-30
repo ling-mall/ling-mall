@@ -35,40 +35,40 @@ import java.util.regex.Pattern;
  */
 public class StudentDataScope implements DataScope {
 
-	public static final String RESOURCE_NAME = "student";
+    public static final String RESOURCE_NAME = "student";
 
-	private static final Pattern TABLE_NAME_PATTEN = Pattern.compile("^h2student*$");
+    private static final Pattern TABLE_NAME_PATTEN = Pattern.compile("^h2student*$");
 
-	@Override
-	public String getResource() {
-		return RESOURCE_NAME;
-	}
+    @Override
+    public String getResource() {
+        return RESOURCE_NAME;
+    }
 
-	@Override
-	public boolean includes(String tableName) {
-		// 可以利用正则做匹配
-		Matcher matcher = TABLE_NAME_PATTEN.matcher(tableName);
-		return matcher.matches();
-	}
+    @Override
+    public boolean includes(String tableName) {
+        // 可以利用正则做匹配
+        Matcher matcher = TABLE_NAME_PATTEN.matcher(tableName);
+        return matcher.matches();
+    }
 
-	@Override
-	public Expression getExpression(String tableName, Alias tableAlias) {
-		LoginUser loginUser = LoginUserHolder.get();
+    @Override
+    public Expression getExpression(String tableName, Alias tableAlias) {
+        LoginUser loginUser = LoginUserHolder.get();
 
-		// 如果当前登录用户为空
-		if (loginUser == null) {
-			// where 1 = 2 永不满足
-			return new EqualsTo(new LongValue(1), new LongValue(2));
-		}
+        // 如果当前登录用户为空
+        if (loginUser == null) {
+            // where 1 = 2 永不满足
+            return new EqualsTo(new LongValue(1), new LongValue(2));
+        }
 
-		// 如果是老师则直接放行
-		if (UserRoleType.TEACHER.equals(loginUser.getUserRoleType())) {
-			return null;
-		}
+        // 如果是老师则直接放行
+        if (UserRoleType.TEACHER.equals(loginUser.getUserRoleType())) {
+            return null;
+        }
 
-		// 学生只能查到他自己的数据 where id = xx
-		Column column = new Column(tableAlias == null ? "id" : tableAlias.getName() + "." + "id");
-		return new EqualsTo(column, new LongValue(loginUser.getId()));
-	}
+        // 学生只能查到他自己的数据 where id = xx
+        Column column = new Column(tableAlias == null ? "id" : tableAlias.getName() + "." + "id");
+        return new EqualsTo(column, new LongValue(loginUser.getId()));
+    }
 
 }

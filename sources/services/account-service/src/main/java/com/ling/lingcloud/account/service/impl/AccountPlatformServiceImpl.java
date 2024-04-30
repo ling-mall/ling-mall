@@ -2,7 +2,6 @@ package com.ling.lingcloud.account.service.impl;
 
 
 import com.ling.lingcloud.account.service.IAccountPlatformService;
-
 import org.springframework.stereotype.Service;
 
 /**

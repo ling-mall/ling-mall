@@ -4,7 +4,6 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
-import com.ling.lingcloud.common.exception.BusinessException;
 import com.ling.lingcloud.common.web.exception.WebBusinessException;
 import com.ling.lingcloud.foundation.api.generate.convert.FoundationGenerateTemplateGroupConvert;
 import com.ling.lingcloud.foundation.api.generate.dto.FoundationGenerateTemplateGroupDTO;
