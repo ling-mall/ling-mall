@@ -23,6 +23,11 @@ public class FoundationGenerateEntityColumnVO implements Serializable {
     private Long id;
 
     /**
+     * 实体id
+     */
+    private Long entityId;
+
+    /**
      * 列名
      */
     private String columnName;
