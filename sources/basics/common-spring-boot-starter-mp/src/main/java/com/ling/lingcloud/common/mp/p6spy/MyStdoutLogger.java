@@ -18,7 +18,7 @@ public class MyStdoutLogger extends StdoutLogger {
 
     @Override
     public void logText(String text) {
-        Pattern pattern = Pattern.compile("#(.*?) \\| took (.*?) \\| (.*?) \\| connection (.*?)\\| url (.*?)\\n((?:SELECT|INSERT INTO|UPDATE|DELETE)[\\s\\S]*(?=SELECT))((?:SELECT|INSERT INTO|UPDATE|DELETE)[\\s\\S]*)", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("#(.*?) \\| took (.*?) \\| (.*?) \\| connection (.*?)\\| url (.*?)\\n((?:SELECT|INSERT INTO|UPDATE|DELETE)[\\s\\S]*(?=\\n(?:SELECT|INSERT INTO|UPDATE|DELETE)))\\n((?:SELECT|INSERT INTO|UPDATE|DELETE)[\\s\\S]*)", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             System.err.println("-------------------------------------p6spyLog---------------------------------------");
