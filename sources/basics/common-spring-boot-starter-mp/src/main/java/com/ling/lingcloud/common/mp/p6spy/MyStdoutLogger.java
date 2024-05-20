@@ -1,6 +1,7 @@
 package com.ling.lingcloud.common.mp.p6spy;
 
 
+import cn.hutool.core.util.StrUtil;
 import com.p6spy.engine.spy.appender.StdoutLogger;
 
 import java.util.regex.Matcher;
@@ -17,7 +18,7 @@ public class MyStdoutLogger extends StdoutLogger {
 
     @Override
     public void logText(String text) {
-        Pattern pattern = Pattern.compile("#(.*?) \\| took (.*?) \\| (.*?) \\| connection (.*?)\\| url (.*?)\n(.*)\n(.*)");
+        Pattern pattern = Pattern.compile("#(.*?) \\| took (.*?) \\| (.*?) \\| connection (.*?)\\| url (.*?)\\n((?:SELECT|INSERT INTO|UPDATE|DELETE)[\\s\\S]*(?=SELECT))((?:SELECT|INSERT INTO|UPDATE|DELETE)[\\s\\S]*)", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             System.err.println("-------------------------------------p6spyLog---------------------------------------");
@@ -26,10 +27,9 @@ public class MyStdoutLogger extends StdoutLogger {
             System.err.println("Statement Type: " + matcher.group(3));
             System.err.println("Connection ID: " + matcher.group(4));
             System.err.println("URL: " + matcher.group(5));
-            System.err.println("SQL Statement 1: " + matcher.group(6));
-            System.err.println("SQL Statement 2: " + matcher.group(7));
+            System.err.println("SQL Statement 1: " + StrUtil.removeAllLineBreaks(matcher.group(6)).replaceAll("\\s+", " ").replaceAll(",\\s", ","));
+            System.err.println("SQL Statement 2: " + StrUtil.removeAllLineBreaks(matcher.group(7)).replaceAll("\\s+", " ").replaceAll(",\\s", ","));
             System.err.println("-----------------------------------------------------------------------------------");
-
         }
     }
 }
