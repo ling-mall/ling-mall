@@ -1,7 +1,9 @@
 package com.ling.lingcloud.foundation.generate.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ling.lingcloud.foundation.api.generate.dto.generateentity.FoundationGenerateEntityColumnDTO;
 import com.ling.lingcloud.foundation.api.generate.dto.generateentity.FoundationGenerateEntityRowDTO;
+import com.ling.lingcloud.foundation.api.generate.dto.generateentity.FoundationGenerateEntityValueDTO;
 import com.ling.lingcloud.foundation.api.generate.entity.FoundationGenerateEntity;
 import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityColumnVO;
 import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityRowVO;
@@ -54,6 +56,23 @@ public interface GenerateEntityMapper extends BaseMapper<FoundationGenerateEntit
      * @return 插入行数
      */
     int insertRow(FoundationGenerateEntityRowDTO dto);
+
+    /**
+     * 插入列
+     *
+     * @param dto 列dto
+     * @return 插入列数
+     */
+    int insertColumn(FoundationGenerateEntityColumnDTO dto);
+
+
+    /**
+     * 插入值
+     *
+     * @param dto 值dto
+     * @return 插入值数
+     */
+    int insertValue(FoundationGenerateEntityValueDTO dto);
 
     /**
      * 删除行

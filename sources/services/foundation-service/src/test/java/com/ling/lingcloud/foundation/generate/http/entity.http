@@ -1,0 +1,28 @@
+### 添加实体
+POST http://localhost:20004/foundation/generate/entity
+Content-Type: application/json
+
+{
+  "groupId": 0,
+  "entityName": "User",
+  "rows": [
+    {
+      "index": 0,
+      "columns": [
+        {
+          "columnName": "JavaType",
+          "orderNo": 0,
+          "value": "Long"
+        },
+        {
+          "columnName": "MysqlType",
+          "orderNo": 1,
+          "value": "bigint"
+        }
+      ]
+    }
+  ]
+}
+
+### 获取实体
+GET http://localhost:20004/foundation/generate/entity/5

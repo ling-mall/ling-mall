@@ -1,5 +1,6 @@
 package com.ling.lingcloud.foundation.generate.service;
 
+import com.ling.lingcloud.foundation.api.generate.dto.generateentity.FoundationGenerateEntityDTO;
 import com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityVO;
 
 /**
@@ -17,4 +18,12 @@ public interface IGenerateTemplateEntityService {
      * @return 模板实体
      */
     FoundationGenerateEntityVO getTemplateEntity(Long entityId);
+
+    /**
+     * 保存模板实体.
+     *
+     * @param foundationGenerateEntityDTO 模板实体
+     * @return 是否成功
+     */
+    Boolean saveTemplateEntity(FoundationGenerateEntityDTO foundationGenerateEntityDTO);
 }

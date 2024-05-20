@@ -17,6 +17,11 @@ public class FoundationGenerateEntityColumnDTO {
     private Long id;
 
     /**
+     * 实体id
+     */
+    private Long entityId;
+
+    /**
      * 列名
      */
     private String columnName;

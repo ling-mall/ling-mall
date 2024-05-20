@@ -2,9 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ling.lingcloud.foundation.generate.mapper.GenerateEntityMapper">
 
-    <insert id="insertRow">
-        INSERT INTO foundation_generate_entity_row (id, `index`, entity_id)
-        VALUES (#{id}, #{index}, #{entityId})
+    <insert id="insertRow" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO foundation_generate_entity_row (`index`, entity_id)
+        VALUES (#{index}, #{entityId})
+    </insert>
+    <insert id="insertColumn" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO foundation_generate_entity_column (column_name,
+        <if test="orderNo != null">order_no,</if>
+        <if test="isRequired != null">is_required,</if>
+        entity_id)
+        VALUES (#{columnName},
+        <if test="orderNo != null">#{orderNo},</if>
+        <if test="isRequired != null">#{isRequired},</if>
+        #{entityId})
+    </insert>
+    <insert id="insertValue" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO foundation_generate_entity_value (entity_id, column_id, row_id, value)
+        VALUES (#{entityId}, #{columnId}, #{rowId}, #{value})
     </insert>
     <delete id="deleteRow">
         DELETE
@@ -39,13 +53,13 @@
     <delete id="deleteValueByRowId">
         DELETE
         FROM foundation_generate_entity_value
-        WHERE entity_row_id = #{rowId}
+        WHERE row_id = #{rowId}
     </delete>
 
     <delete id="deleteValueByColumnId">
         DELETE
         FROM foundation_generate_entity_value
-        WHERE entity_column_id = #{columnId}
+        WHERE column_id = #{columnId}
     </delete>
 
     <select id="listRowByEntityId"
@@ -57,14 +71,14 @@
 
     <select id="listColumnByEntityId"
             resultType="com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityColumnVO">
-        SELECT id, entity_id, column_name, `order`, is_required
+        SELECT id, entity_id, column_name, `order_no`, is_required
         FROM foundation_generate_entity_column
         WHERE entity_id = #{entityId}
     </select>
 
     <select id="listValueByEntityId"
             resultType="com.ling.lingcloud.foundation.api.generate.vo.generateentity.FoundationGenerateEntityValueVO">
-        SELECT id, entity_id, entity_column_id, entity_row_id, value
+        SELECT id, entity_id, column_id, row_id, value
         FROM foundation_generate_entity_value
         WHERE entity_id = #{entityId}
     </select>
